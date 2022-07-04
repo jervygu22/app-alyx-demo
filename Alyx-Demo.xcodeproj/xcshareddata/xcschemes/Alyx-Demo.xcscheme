@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0464B14E27ACBCF0007839B4"
-               BuildableName = "Alyx.app"
-               BlueprintName = "Alyx"
-               ReferencedContainer = "container:Alyx.xcodeproj">
+               BuildableName = "Alyx-Demo.app"
+               BlueprintName = "Alyx-Demo"
+               ReferencedContainer = "container:Alyx-Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0464B14E27ACBCF0007839B4"
-            BuildableName = "Alyx.app"
-            BlueprintName = "Alyx"
-            ReferencedContainer = "container:Alyx.xcodeproj">
+            BuildableName = "Alyx-Demo.app"
+            BlueprintName = "Alyx-Demo"
+            ReferencedContainer = "container:Alyx-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0464B14E27ACBCF0007839B4"
-            BuildableName = "Alyx.app"
-            BlueprintName = "Alyx"
-            ReferencedContainer = "container:Alyx.xcodeproj">
+            BuildableName = "Alyx-Demo.app"
+            BlueprintName = "Alyx-Demo"
+            ReferencedContainer = "container:Alyx-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

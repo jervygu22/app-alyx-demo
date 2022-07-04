@@ -178,7 +178,7 @@
 		04519B2027D0419700658EFE /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		045AC8BE27C72480006CA46A /* CouponsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsResponse.swift; sourceTree = "<group>"; };
 		045AC8C127C72CD9006CA46A /* AddOnsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnsResponse.swift; sourceTree = "<group>"; };
-		0464B14F27ACBCF0007839B4 /* Alyx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alyx.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0464B14F27ACBCF0007839B4 /* Alyx-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alyx-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464B15227ACBCF0007839B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0464B15427ACBCF0007839B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0464B15627ACBCF0007839B4 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -325,7 +325,7 @@
 		0464B14627ACBCF0007839B4 = {
 			isa = PBXGroup;
 			children = (
-				0464B15127ACBCF0007839B4 /* Alyx */,
+				0464B15127ACBCF0007839B4 /* Alyx-Demo */,
 				0464B15027ACBCF0007839B4 /* Products */,
 				4A42C55F023BDD4FCB934F37 /* Pods */,
 				CEE9233E030DCAF4ED731A08 /* Frameworks */,
@@ -335,12 +335,12 @@
 		0464B15027ACBCF0007839B4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0464B14F27ACBCF0007839B4 /* Alyx.app */,
+				0464B14F27ACBCF0007839B4 /* Alyx-Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0464B15127ACBCF0007839B4 /* Alyx */ = {
+		0464B15127ACBCF0007839B4 /* Alyx-Demo */ = {
 			isa = PBXGroup;
 			children = (
 				04A2817C27ACDAF800FF1777 /* Entities */,
@@ -354,7 +354,7 @@
 				0464B16027ACBCF1007839B4 /* Info.plist */,
 				42E900E5284058BA00037A69 /* GoogleService-Info.plist */,
 			);
-			path = Alyx;
+			path = "Alyx-Demo";
 			sourceTree = "<group>";
 		};
 		047CAD1827CE2CC4002E857C /* Test Routes */ = {
@@ -676,9 +676,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0464B14E27ACBCF0007839B4 /* Alyx */ = {
+		0464B14E27ACBCF0007839B4 /* Alyx-Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0464B16327ACBCF2007839B4 /* Build configuration list for PBXNativeTarget "Alyx" */;
+			buildConfigurationList = 0464B16327ACBCF2007839B4 /* Build configuration list for PBXNativeTarget "Alyx-Demo" */;
 			buildPhases = (
 				A2B6CE313797E2D398724B54 /* [CP] Check Pods Manifest.lock */,
 				0464B14B27ACBCF0007839B4 /* Sources */,
@@ -691,9 +691,9 @@
 			);
 			dependencies = (
 			);
-			name = Alyx;
+			name = "Alyx-Demo";
 			productName = "Jeeves-dev";
-			productReference = 0464B14F27ACBCF0007839B4 /* Alyx.app */;
+			productReference = 0464B14F27ACBCF0007839B4 /* Alyx-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -710,7 +710,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0464B14A27ACBCF0007839B4 /* Build configuration list for PBXProject "Alyx" */;
+			buildConfigurationList = 0464B14A27ACBCF0007839B4 /* Build configuration list for PBXProject "Alyx-Demo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -723,7 +723,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0464B14E27ACBCF0007839B4 /* Alyx */,
+				0464B14E27ACBCF0007839B4 /* Alyx-Demo */,
 			);
 		};
 /* End PBXProject section */
@@ -1097,14 +1097,14 @@
 				CURRENT_PROJECT_VERSION = 24;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UH3KRKPDYQ;
-				INFOPLIST_FILE = Alyx/Info.plist;
+				INFOPLIST_FILE = "Alyx-Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.codedisruptors.Alyx;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codedisruptors.Alyx-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1120,14 +1120,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 24;
 				DEVELOPMENT_TEAM = UH3KRKPDYQ;
-				INFOPLIST_FILE = Alyx/Info.plist;
+				INFOPLIST_FILE = "Alyx-Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.codedisruptors.Alyx;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.codedisruptors.Alyx-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1137,7 +1137,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0464B14A27ACBCF0007839B4 /* Build configuration list for PBXProject "Alyx" */ = {
+		0464B14A27ACBCF0007839B4 /* Build configuration list for PBXProject "Alyx-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0464B16127ACBCF1007839B4 /* Debug */,
@@ -1146,7 +1146,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0464B16327ACBCF2007839B4 /* Build configuration list for PBXNativeTarget "Alyx" */ = {
+		0464B16327ACBCF2007839B4 /* Build configuration list for PBXNativeTarget "Alyx-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0464B16427ACBCF2007839B4 /* Debug */,
