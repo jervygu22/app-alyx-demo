@@ -72,6 +72,9 @@ class DrawerTableViewCell: UITableViewCell {
     func configure(with model: DrawerData) {
         titleLabel.text = model.title
         iconImage.image = UIImage(systemName: model.imageIcon)
+        if model.imageIcon == "ic_contact_us" {
+            iconImage.image = UIImage(named: model.imageIcon)
+        }
     }
     
 }

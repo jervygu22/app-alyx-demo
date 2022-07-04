@@ -155,7 +155,7 @@ final class AuthManager {
         UserDefaults.standard.setValue(nil, forKey: Constants.pin_entered_employee_shift)
         
         UserDefaults.standard.setValue(nil, forKey: Constants.date_since_last_update)
-        UserDefaults.standard.setValue(nil, forKey: Constants.isAuthorized)
+        UserDefaults.standard.setValue(nil, forKey: Constants.is_authorized)
         UserDefaults.standard.setValue(nil, forKey: Constants.domain_name)
     }
 }

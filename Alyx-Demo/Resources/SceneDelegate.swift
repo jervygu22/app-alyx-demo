@@ -20,24 +20,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         let window = UIWindow(windowScene: windowScene)
         
+//        if AuthManager.shared.isLoggedIn {
+//            window.rootViewController = UINavigationController(rootViewController: MenuViewController())
+//        } else if AuthManager.shared.isHaveVerifiedDomain && AuthManager.shared.doesHaveCachedDeviceID {
+//            window.rootViewController = UINavigationController(rootViewController: UserLoginViewController(deviceID: nil))
+//        } else {
+//            let navVC = UINavigationController(rootViewController: DomainViewController())
+//            navVC.navigationBar.prefersLargeTitles = false
+//            navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .never
+//
+//            UINavigationBar.appearance().barTintColor = .black  // solid color
+//            UINavigationBar.appearance().barStyle = .black // Battery,etc bar always white
+//            UINavigationBar.appearance().isTranslucent = false // not see through
+//
+//            UIBarButtonItem.appearance().tintColor = .white
+//            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+//            UITabBar.appearance().barTintColor = .yellow // tabBar
+//
+//            window.rootViewController = navVC
+//        }
+        
         if AuthManager.shared.isLoggedIn {
             window.rootViewController = UINavigationController(rootViewController: MenuViewController())
-        } else if AuthManager.shared.isHaveVerifiedDomain && AuthManager.shared.doesHaveCachedDeviceID {
-            window.rootViewController = UINavigationController(rootViewController: UserLoginViewController(deviceID: nil))
         } else {
-            let navVC = UINavigationController(rootViewController: DomainViewController())
-            navVC.navigationBar.prefersLargeTitles = false
-            navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .never
-            
-            UINavigationBar.appearance().barTintColor = .black  // solid color
-            UINavigationBar.appearance().barStyle = .black // Battery,etc bar always white
-            UINavigationBar.appearance().isTranslucent = false // not see through
-            
-            UIBarButtonItem.appearance().tintColor = .white
-            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-            UITabBar.appearance().barTintColor = .yellow // tabBar
-            
-            window.rootViewController = navVC
+            window.rootViewController = UINavigationController(rootViewController: ProgressViewController())
         }
         
         window.makeKeyAndVisible()

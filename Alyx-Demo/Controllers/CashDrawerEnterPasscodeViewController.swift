@@ -22,9 +22,9 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
     
     public var completionHandler: ((Bool) -> Void)?
     public var pinEntered: [Character] = []
-    private var users: [Users]?
+    private var users: [User]?
     
-    init(users: [Users], createdCashCount: [String: Int])  {
+    init(users: [User], createdCashCount: [String: Int])  {
         self.users = users
 //        self.cashCountBody = cashCountPostModel
         self.createdCashCount = createdCashCount

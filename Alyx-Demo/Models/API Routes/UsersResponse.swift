@@ -11,12 +11,12 @@ import Foundation
 struct UsersResponse: Codable {
     let success: Bool
     let message: String
-    let data: [Users]
+    let data: [User]
     let total_items: Int
 }
 
 // MARK: - Users
-struct Users: Codable {
+struct User: Codable {
     let user_id, user_name: String
     let user_image: String
     let user_login, user_email, user_pass, user_emp_id: String

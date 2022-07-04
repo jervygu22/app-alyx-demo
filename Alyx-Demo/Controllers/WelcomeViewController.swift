@@ -8,7 +8,7 @@
 import UIKit
 
 class WelcomeViewController: UIViewController, UITextFieldDelegate {
-    private var users: [Users] = []
+    private var users: [User] = []
     
     public var completionHandler: ((Bool) -> Void)?
     

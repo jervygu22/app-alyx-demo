@@ -20,7 +20,7 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
     
     private var createdCashCount = [String: Int]()
     
-    private var users = [Users]()
+    private var users = [User]()
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -263,7 +263,7 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
         
     }
     
-    func createEnterPasscodeView(users: [Users], createdCashCount: [String : Int]) {
+    func createEnterPasscodeView(users: [User], createdCashCount: [String : Int]) {
         
         let vc = CashDrawerEnterPasscodeViewController(users: users, createdCashCount: createdCashCount)
         

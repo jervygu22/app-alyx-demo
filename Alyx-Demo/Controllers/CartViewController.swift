@@ -47,7 +47,7 @@ class CartViewController: UIViewController, CashMethodViewControllerDelegate, Ca
     var cartViewControllerDelegate: CartViewControllerDelegate?
     weak var cartViewControllerCashierInfoDelegate: CartViewControllerCashierInfoDelegate?
     
-    private var fetchedAllUsers = [Users]()
+    private var fetchedAllUsers = [User]()
     private var usersEntity = [Users_Entity]()
     public var superVisor = Users_Entity()
     

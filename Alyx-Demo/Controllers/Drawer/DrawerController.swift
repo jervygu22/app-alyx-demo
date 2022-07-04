@@ -23,6 +23,7 @@ enum DrawerItems: String, CaseIterable {
     case queue = "Queue"
 //    case notification = "Notification"
     case termsCondition = "Terms & Condition"
+    case contactUs = "Contact Us"
     case settings = "Settings"
 //    case logout = "Logout"
     
@@ -40,6 +41,8 @@ enum DrawerItems: String, CaseIterable {
 //            return NotificationViewController()
         case .termsCondition:
             return WebViewController()
+        case .contactUs:
+            return ContactUsViewController()
         case .settings:
             return SettingsViewController()
 //        case .logout:
@@ -61,6 +64,8 @@ enum DrawerItems: String, CaseIterable {
 //            return "bell.fill"
         case .termsCondition:
             return "checkmark.shield.fill"
+        case .contactUs:
+            return "ic_contact_us" // "questionmark.circle.fill"
         case .settings:
             return "gearshape.fill"
 //        case .logout:

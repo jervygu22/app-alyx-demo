@@ -10,8 +10,8 @@ import UIKit
 struct Constants {
     // UserDefaults Identifier
     
-    static let version = "v1.1.24"
-    static let buildNumber = "1.1.24"
+    static let version = "v1.0.1"
+    static let buildNumber = "1.0.1"
     
     static let app_logo = "alyx_logo"
     
@@ -22,9 +22,10 @@ struct Constants {
     static let token_user_display_name = "token_user_display_name"
     static let domain_name = "domain_name"
     
+    
     static let machine_id = "machine_id"
     
-    static let isAuthorized = "is_authorized"
+    static let is_authorized = "is_authorized"
     static let user_id = "user_id"
     static let user_name = "user_name"
     static let user_email = "user_email"
@@ -129,4 +130,9 @@ struct Constants {
     static let testScheduleData = URL(string: "https://raw.githubusercontent.com/jervygu/jeeves-test-api/master/shifts.json")
     
     static let testUrl = URL(string: "https://raw.githubusercontent.com/jervygu/json-pubg101/master/pubg-weapons.json")
+    
+    
+    
+    static let demo_franchise_name = "demofranchise"
+    static let demo_device_id = "DEMO_DEVICE_iOS"
 }

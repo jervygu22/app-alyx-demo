@@ -57,14 +57,14 @@ class EnterPasscodeViewController: UIViewController, UITextFieldDelegate {
 //        self.currentMinute = currentMinute
 //        super.init(nibName: nil, bundle: nil)
     
-    private var users: [Users]?
+    private var users: [User]?
     private var selected_InOut: String?
     private var selected_shift: String?
     private var workDate: String?
     
     private var unclosedAttandance: [GetAttendanceData]?
     
-    init(users: [Users], selected_InOut: String, selected_shift: String, workDate: String, unclosedAttandance: [GetAttendanceData]) {
+    init(users: [User], selected_InOut: String, selected_shift: String, workDate: String, unclosedAttandance: [GetAttendanceData]) {
         self.users = users
         self.selected_InOut = selected_InOut
         self.selected_shift = selected_shift
@@ -581,7 +581,7 @@ class EnterPasscodeViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func showAlertToCacheCashier(title: String, message: String, style: UIAlertController.Style, user: Users, shift: String, workDate: String) {
+    private func showAlertToCacheCashier(title: String, message: String, style: UIAlertController.Style, user: User, shift: String, workDate: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { [weak self] _ in
             self?.dismiss(animated: true, completion: nil)

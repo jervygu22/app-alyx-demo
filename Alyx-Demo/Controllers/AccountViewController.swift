@@ -42,7 +42,7 @@ class AccountViewController: UIViewController, EnterPasscodeViewControllerDelega
     
     weak var accountViewControllerDelegate: AccountViewControllerDelegate?
     
-    private var users: [Users] = []
+    private var users: [User] = []
     
     public var selected_InOut: String?
     public var selected_shift: String?
@@ -208,7 +208,7 @@ class AccountViewController: UIViewController, EnterPasscodeViewControllerDelega
         
         
         let dispatchGroup = DispatchGroup()
-        var users: [Users]?
+        var users: [User]?
         var employeeShifts: [EmployeeShiftTypeData]?
         var newEmployeeShifts: [NewShift]?
         
@@ -306,7 +306,7 @@ class AccountViewController: UIViewController, EnterPasscodeViewControllerDelega
         }
     }
     
-    private func configureModels(users: [Users], shifts: [EmployeeShiftTypeData], newShifts: [NewShift]) {
+    private func configureModels(users: [User], shifts: [EmployeeShiftTypeData], newShifts: [NewShift]) {
         
         accountSection.removeAll()
         
@@ -658,7 +658,7 @@ extension AccountViewController: UICollectionViewDelegate, UICollectionViewDataS
 //    }
     
     
-    func createEnterPasscodeView(users: [Users], selected_InOut: String, selected_shift: String, workDate: String) {
+    func createEnterPasscodeView(users: [User], selected_InOut: String, selected_shift: String, workDate: String) {
         
         let vc = EnterPasscodeViewController(users: users, selected_InOut: selected_InOut, selected_shift: selected_shift, workDate: workDate, unclosedAttandance: self.unlosedAttendance)
         

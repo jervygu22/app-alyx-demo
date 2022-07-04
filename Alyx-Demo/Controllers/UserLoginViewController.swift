@@ -41,7 +41,7 @@ class UserLoginViewController: UIViewController {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var usersEntity = [Users_Entity]()
-    private var users: [Users] = []
+    private var users: [User] = []
     
     private var usersCredential: UserCredentials?
     

@@ -142,6 +142,8 @@
 		426B58B527EC476600739EC7 /* HistoryItemByIDResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B58B427EC476600739EC7 /* HistoryItemByIDResponse.swift */; };
 		426B58B727EC48EA00739EC7 /* VoidOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B58B627EC48EA00739EC7 /* VoidOrderModel.swift */; };
 		426D4D76283B8FCD00789227 /* OldQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426D4D75283B8FCD00789227 /* OldQueueViewController.swift */; };
+		428AB9122872AAA400D6CEBB /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AB9112872AAA400D6CEBB /* ProgressViewController.swift */; };
+		428AB9142872DBF400D6CEBB /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AB9132872DBF400D6CEBB /* ContactUsViewController.swift */; };
 		42C3897927F136C9008F8461 /* VoidPasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3897827F136C9008F8461 /* VoidPasscodeViewController.swift */; };
 		42C3897C27F1AF1B008F8461 /* SnackBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3897B27F1AF1B008F8461 /* SnackBarView.swift */; };
 		42C3898027F1AF5A008F8461 /* SnackBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C3897F27F1AF5A008F8461 /* SnackBarViewModel.swift */; };
@@ -293,6 +295,8 @@
 		426B58B427EC476600739EC7 /* HistoryItemByIDResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemByIDResponse.swift; sourceTree = "<group>"; };
 		426B58B627EC48EA00739EC7 /* VoidOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidOrderModel.swift; sourceTree = "<group>"; };
 		426D4D75283B8FCD00789227 /* OldQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldQueueViewController.swift; sourceTree = "<group>"; };
+		428AB9112872AAA400D6CEBB /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		428AB9132872DBF400D6CEBB /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		42C3897827F136C9008F8461 /* VoidPasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidPasscodeViewController.swift; sourceTree = "<group>"; };
 		42C3897B27F1AF1B008F8461 /* SnackBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarView.swift; sourceTree = "<group>"; };
 		42C3897F27F1AF5A008F8461 /* SnackBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackBarViewModel.swift; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				04A2812227ACD61A00FF1777 /* DomainViewController.swift */,
 				04A2812527ACD62D00FF1777 /* CheckDeviceViewController.swift */,
 				04A2812827ACD64800FF1777 /* UserLoginViewController.swift */,
+				428AB9112872AAA400D6CEBB /* ProgressViewController.swift */,
 				04A2811727ACD5B800FF1777 /* Drawer */,
 				0464B15627ACBCF0007839B4 /* MenuViewController.swift */,
 				04A2812E27ACD69900FF1777 /* MenuSearchResultsViewController.swift */,
@@ -417,6 +422,7 @@
 				04A2814927ACD77600FF1777 /* QueueItemViewController.swift */,
 				04A2814C27ACD78A00FF1777 /* NotificationViewController.swift */,
 				04A2814F27ACD79D00FF1777 /* WebViewController.swift */,
+				428AB9132872DBF400D6CEBB /* ContactUsViewController.swift */,
 				04A2815227ACD7B300FF1777 /* SettingsViewController.swift */,
 				04A2815827ACD7E400FF1777 /* CartViewController.swift */,
 				04A2815B27ACD7FA00FF1777 /* CartWorkingViewController.swift */,
@@ -809,6 +815,8 @@
 				04A280D227ACCF7C00FF1777 /* CashPaymentHeaderTableViewCell.swift in Sources */,
 				421E56682837378E003A937A /* CashierBarButtonItem.swift in Sources */,
 				04A2807327ACC82700FF1777 /* SearchHeaderCollectionReusableView.swift in Sources */,
+				428AB9142872DBF400D6CEBB /* ContactUsViewController.swift in Sources */,
+				428AB9122872AAA400D6CEBB /* ProgressViewController.swift in Sources */,
 				04A2808327ACC93B00FF1777 /* AuthManager.swift in Sources */,
 				04A2805427ACC62C00FF1777 /* ProductsResponse.swift in Sources */,
 				04A280A927ACCDB800FF1777 /* AccountTableViewCell.swift in Sources */,
@@ -1094,7 +1102,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UH3KRKPDYQ;
 				INFOPLIST_FILE = "Alyx-Demo/Info.plist";
@@ -1103,7 +1111,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codedisruptors.Alyx-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1118,7 +1126,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UH3KRKPDYQ;
 				INFOPLIST_FILE = "Alyx-Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1126,7 +1134,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.codedisruptors.Alyx-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

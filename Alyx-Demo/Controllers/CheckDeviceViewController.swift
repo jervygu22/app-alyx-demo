@@ -167,7 +167,7 @@ class CheckDeviceViewController: UIViewController {
             
             if device.device_id_status {
                 createAlertLabel(with: "Verified!")
-                UserDefaults.standard.set(true, forKey: Constants.isAuthorized)
+                UserDefaults.standard.set(true, forKey: Constants.is_authorized)
                 
                 print("\(device.device_id) is authorized = \(device.device_id_status)")
                 let vc = UserLoginViewController(deviceID: device.device_id)

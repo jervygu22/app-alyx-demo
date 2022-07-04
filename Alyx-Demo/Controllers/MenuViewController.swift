@@ -17,7 +17,7 @@ enum MenuSectionType {
     var title: String {
         switch self {
         case .categorySection:
-            return "Choose a Category"
+            return "Categories"
         case .productSection:
             if MenuViewController.categoryName == nil {
                 return "All" //"All Menu"
@@ -49,6 +49,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
     public let queueVC = QueueViewController()
     public let notifVC = NotificationViewController()
     public let settingsVC = SettingsViewController()
+    public let contactUs = ContactUsViewController()
     public let termsCondition = WebViewController()
     
     private var fetchCategories: [Category] = []
@@ -1590,6 +1591,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         addChild(queueVC)
         addChild(notifVC)
         addChild(termsCondition)
+        addChild(contactUs)
         addChild(settingsVC)
         
         /// adding each view us a subView
@@ -1598,6 +1600,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         view.addSubview(queueVC.view)
         view.addSubview(notifVC.view)
         view.addSubview(termsCondition.view)
+        view.addSubview(contactUs.view)
         view.addSubview(settingsVC.view)
         /// setting frame to be the entirety of the screen
         historyVC.view.frame = view.bounds
@@ -1605,6 +1608,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         queueVC.view.frame = view.bounds
         notifVC.view.frame = view.bounds
         termsCondition.view.frame = view.bounds
+        contactUs.view.frame = view.bounds
         settingsVC.view.frame = view.bounds
         /// moved to be a child under the parent itself MenuVC
         historyVC.didMove(toParent: self)
@@ -1612,6 +1616,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         queueVC.didMove(toParent: self)
         notifVC.didMove(toParent: self)
         termsCondition.didMove(toParent: self)
+        contactUs.didMove(toParent: self)
         settingsVC.didMove(toParent: self)
         
         // hide
@@ -1628,6 +1633,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         queueVC.view.isHidden = true
         notifVC.view.isHidden = true
         termsCondition.view.isHidden = true
+        contactUs.view.isHidden = true
         settingsVC.view.isHidden = true
     }
     
@@ -2412,6 +2418,7 @@ extension MenuViewController {
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
             termsCondition.view.isHidden = true
+            contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             break
         case .history:
@@ -2423,6 +2430,7 @@ extension MenuViewController {
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
             termsCondition.view.isHidden = true
+            contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             break
             
@@ -2434,6 +2442,7 @@ extension MenuViewController {
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
             termsCondition.view.isHidden = true
+            contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             
             /// call to refetchdata
@@ -2451,6 +2460,7 @@ extension MenuViewController {
             queueVC.view.isHidden = false
             notifVC.view.isHidden = true
             termsCondition.view.isHidden = true
+            contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             
             // fetch queue
@@ -2465,6 +2475,7 @@ extension MenuViewController {
 //            queueVC.view.isHidden = true
 //            notifVC.view.isHidden = false
 //            termsCondition.view.isHidden = true
+//            contactUs.view.isHidden = true
 //            settingsVC.view.isHidden = true
 //            break
         case .termsCondition:
@@ -2475,6 +2486,18 @@ extension MenuViewController {
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
             termsCondition.view.isHidden = false
+            contactUs.view.isHidden = true
+            settingsVC.view.isHidden = true
+            break
+        case .contactUs:
+            navigationItem.searchController = nil
+            navigationItem.rightBarButtonItems = [cartBarButton] // userInfoBarButton
+            historyVC.view.isHidden = true
+            accountVC.view.isHidden = true
+            queueVC.view.isHidden = true
+            notifVC.view.isHidden = true
+            termsCondition.view.isHidden = true
+            contactUs.view.isHidden = false
             settingsVC.view.isHidden = true
             break
         case .settings:
@@ -2485,6 +2508,7 @@ extension MenuViewController {
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
             termsCondition.view.isHidden = true
+            contactUs.view.isHidden = true
             settingsVC.view.isHidden = false
             break
 //        case .logout:
