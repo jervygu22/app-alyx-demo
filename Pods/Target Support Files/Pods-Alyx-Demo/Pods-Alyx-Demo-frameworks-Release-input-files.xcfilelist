@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-Alyx-Demo/Pods-Alyx-Demo-frameworks.sh
+${BUILT_PRODUCTS_DIR}/GMStepper/GMStepper.framework
+${BUILT_PRODUCTS_DIR}/SDCAlertView/SDCAlertView.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework
+${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework

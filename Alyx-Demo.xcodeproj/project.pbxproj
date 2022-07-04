@@ -130,6 +130,7 @@
 		04A2818327ACDEF200FF1777 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A2818227ACDEF200FF1777 /* APIResponse.swift */; };
 		04C1DA4227D7543A002239AF /* Token_Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C1DA4027D7543A002239AF /* Token_Entity+CoreDataClass.swift */; };
 		04C1DA4327D7543A002239AF /* Token_Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C1DA4127D7543A002239AF /* Token_Entity+CoreDataProperties.swift */; };
+		2738EBE5E3AC2D78D91D3B98 /* Pods_Alyx_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614B2D44D0E8D4ED1BDDD937 /* Pods_Alyx_Demo.framework */; };
 		4207216D2847266900C2029F /* AddOnsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4207216C2847266900C2029F /* AddOnsCollectionViewCell.swift */; };
 		420FA3F72860008D007C7627 /* AttendanceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FA3F62860008D007C7627 /* AttendanceResponse.swift */; };
 		421323F12822131D0066C708 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421323F02822131D0066C708 /* ReceiptViewController.swift */; };
@@ -149,9 +150,7 @@
 		42D6DE7027F0069000EA4D80 /* Coupons_Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D6DE6E27F0069000EA4D80 /* Coupons_Entity+CoreDataProperties.swift */; };
 		42DDEEF9281B6E040009EF43 /* AddOns_Entity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDEEF7281B6E040009EF43 /* AddOns_Entity+CoreDataClass.swift */; };
 		42DDEEFA281B6E040009EF43 /* AddOns_Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DDEEF8281B6E040009EF43 /* AddOns_Entity+CoreDataProperties.swift */; };
-		42E900E6284058BA00037A69 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42E900E5284058BA00037A69 /* GoogleService-Info.plist */; };
 		42F5656C27FB0D370090718B /* CartBadgeBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F5656B27FB0D370090718B /* CartBadgeBarButtonItem.swift */; };
-		49FB248B3D8E35BC5E83A964 /* Pods_Alyx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77B1F138F6238501D46D19E3 /* Pods_Alyx.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -281,6 +280,7 @@
 		04C1DA4027D7543A002239AF /* Token_Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Token_Entity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		04C1DA4127D7543A002239AF /* Token_Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Token_Entity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		08167EF9460C30DF3B1BCCA5 /* Pods-Alyx-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alyx-dev.release.xcconfig"; path = "Target Support Files/Pods-Alyx-dev/Pods-Alyx-dev.release.xcconfig"; sourceTree = "<group>"; };
+		0EABA206093A7DFBD18399EE /* Pods-Alyx-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alyx-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Alyx-Demo/Pods-Alyx-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		1D5A818E2DB0351485987181 /* Pods-Jeeves-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jeeves-dev.debug.xcconfig"; path = "Target Support Files/Pods-Jeeves-dev/Pods-Jeeves-dev.debug.xcconfig"; sourceTree = "<group>"; };
 		4207216C2847266900C2029F /* AddOnsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnsCollectionViewCell.swift; sourceTree = "<group>"; };
 		420FA3F62860008D007C7627 /* AttendanceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceResponse.swift; sourceTree = "<group>"; };
@@ -301,13 +301,13 @@
 		42D6DE6E27F0069000EA4D80 /* Coupons_Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coupons_Entity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		42DDEEF7281B6E040009EF43 /* AddOns_Entity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddOns_Entity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		42DDEEF8281B6E040009EF43 /* AddOns_Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddOns_Entity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		42E900E5284058BA00037A69 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		42F5656B27FB0D370090718B /* CartBadgeBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBadgeBarButtonItem.swift; sourceTree = "<group>"; };
 		5F75680C96211EE59BF9CA2F /* Pods-Alyx-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alyx-dev.debug.xcconfig"; path = "Target Support Files/Pods-Alyx-dev/Pods-Alyx-dev.debug.xcconfig"; sourceTree = "<group>"; };
+		614B2D44D0E8D4ED1BDDD937 /* Pods_Alyx_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alyx_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70031B27A342707F54C65B22 /* Pods-Jeeves-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jeeves-dev.release.xcconfig"; path = "Target Support Files/Pods-Jeeves-dev/Pods-Jeeves-dev.release.xcconfig"; sourceTree = "<group>"; };
 		7530997596E3C662539E52CD /* Pods-Alyx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alyx.release.xcconfig"; path = "Target Support Files/Pods-Alyx/Pods-Alyx.release.xcconfig"; sourceTree = "<group>"; };
-		77B1F138F6238501D46D19E3 /* Pods_Alyx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Alyx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2479A99D986CF5585C1AC8B /* Pods-Alyx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alyx.debug.xcconfig"; path = "Target Support Files/Pods-Alyx/Pods-Alyx.debug.xcconfig"; sourceTree = "<group>"; };
+		E6701D7DA6CEB1FCDDE6EC7C /* Pods-Alyx-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alyx-Demo.release.xcconfig"; path = "Target Support Files/Pods-Alyx-Demo/Pods-Alyx-Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,7 +315,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49FB248B3D8E35BC5E83A964 /* Pods_Alyx.framework in Frameworks */,
+				2738EBE5E3AC2D78D91D3B98 /* Pods_Alyx_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,7 +352,6 @@
 				04A2807127ACC7B300FF1777 /* Views */,
 				04A280DA27ACD07800FF1777 /* ViewModels */,
 				0464B16027ACBCF1007839B4 /* Info.plist */,
-				42E900E5284058BA00037A69 /* GoogleService-Info.plist */,
 			);
 			path = "Alyx-Demo";
 			sourceTree = "<group>";
@@ -661,6 +660,8 @@
 				08167EF9460C30DF3B1BCCA5 /* Pods-Alyx-dev.release.xcconfig */,
 				E2479A99D986CF5585C1AC8B /* Pods-Alyx.debug.xcconfig */,
 				7530997596E3C662539E52CD /* Pods-Alyx.release.xcconfig */,
+				0EABA206093A7DFBD18399EE /* Pods-Alyx-Demo.debug.xcconfig */,
+				E6701D7DA6CEB1FCDDE6EC7C /* Pods-Alyx-Demo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -668,7 +669,7 @@
 		CEE9233E030DCAF4ED731A08 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				77B1F138F6238501D46D19E3 /* Pods_Alyx.framework */,
+				614B2D44D0E8D4ED1BDDD937 /* Pods_Alyx_Demo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -734,7 +735,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0464B15F27ACBCF1007839B4 /* LaunchScreen.storyboard in Resources */,
-				42E900E6284058BA00037A69 /* GoogleService-Info.plist in Resources */,
 				0464B15C27ACBCF1007839B4 /* Assets.xcassets in Resources */,
 				0464B15A27ACBCF0007839B4 /* Main.storyboard in Resources */,
 			);
@@ -775,7 +775,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Alyx-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Alyx-Demo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -788,15 +788,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Alyx/Pods-Alyx-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Alyx-Demo/Pods-Alyx-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Alyx/Pods-Alyx-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Alyx-Demo/Pods-Alyx-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alyx/Pods-Alyx-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alyx-Demo/Pods-Alyx-Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1089,7 +1089,7 @@
 		};
 		0464B16427ACBCF2007839B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2479A99D986CF5585C1AC8B /* Pods-Alyx.debug.xcconfig */;
+			baseConfigurationReference = 0EABA206093A7DFBD18399EE /* Pods-Alyx-Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1113,7 +1113,7 @@
 		};
 		0464B16527ACBCF2007839B4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7530997596E3C662539E52CD /* Pods-Alyx.release.xcconfig */;
+			baseConfigurationReference = E6701D7DA6CEB1FCDDE6EC7C /* Pods-Alyx-Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
