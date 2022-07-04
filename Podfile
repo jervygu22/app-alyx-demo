@@ -15,7 +15,7 @@ target 'Alyx-Demo' do
   # pod 'RealmSwift', '~> 10.20.1'
   # pod 'FloatingPanel', '2.5.2'
 
-  # pod 'Firebase/Core'
-  # pod 'Firebase/Crashlytics'
+    pod 'Firebase/Core'
+    pod 'Firebase/Crashlytics'
 
 end
