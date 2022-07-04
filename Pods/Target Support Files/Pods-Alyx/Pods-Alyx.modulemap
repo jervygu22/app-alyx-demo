@@ -1,0 +1,6 @@
+framework module Pods_Alyx {
+  umbrella header "Pods-Alyx-umbrella.h"
+
+  export *
+  module * { export * }
+}

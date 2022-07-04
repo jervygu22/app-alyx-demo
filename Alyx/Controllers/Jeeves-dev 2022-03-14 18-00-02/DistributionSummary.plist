@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Jeeves-dev.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>13EDC0CDE716EEFA1EAEFCA5229B99E9A4DBAABB</string>
+				<key>dateExpires</key>
+				<string>2/4/23</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>13EDC0CDE716EEFA1EAEFCA5229B99E9A4DBAABB</string>
+						<key>dateExpires</key>
+						<string>2/4/23</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>FloatingPanel.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>UH3KRKPDYQ</string>
+						<key>name</key>
+						<string>CODE DISRUPTORS, INC.</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>13EDC0CDE716EEFA1EAEFCA5229B99E9A4DBAABB</string>
+						<key>dateExpires</key>
+						<string>2/4/23</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>GMStepper.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>UH3KRKPDYQ</string>
+						<key>name</key>
+						<string>CODE DISRUPTORS, INC.</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>13EDC0CDE716EEFA1EAEFCA5229B99E9A4DBAABB</string>
+						<key>dateExpires</key>
+						<string>2/4/23</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>SDCAlertView.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>UH3KRKPDYQ</string>
+						<key>name</key>
+						<string>CODE DISRUPTORS, INC.</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>13EDC0CDE716EEFA1EAEFCA5229B99E9A4DBAABB</string>
+						<key>dateExpires</key>
+						<string>2/4/23</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>SDWebImage.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>UH3KRKPDYQ</string>
+						<key>name</key>
+						<string>CODE DISRUPTORS, INC.</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>13EDC0CDE716EEFA1EAEFCA5229B99E9A4DBAABB</string>
+						<key>dateExpires</key>
+						<string>2/4/23</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>SideMenu.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>UH3KRKPDYQ</string>
+						<key>name</key>
+						<string>CODE DISRUPTORS, INC.</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>13EDC0CDE716EEFA1EAEFCA5229B99E9A4DBAABB</string>
+						<key>dateExpires</key>
+						<string>2/4/23</string>
+						<key>type</key>
+						<string>Apple Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>SwipeCellKit.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>UH3KRKPDYQ</string>
+						<key>name</key>
+						<string>CODE DISRUPTORS, INC.</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>UH3KRKPDYQ.com.codedisruptors.Jeeves-dev</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>UH3KRKPDYQ</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>UH3KRKPDYQ.com.codedisruptors.Jeeves-dev</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>Jeeves-dev.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>4d01d2d0-f19a-4f57-b42e-770e0c740468</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: com.codedisruptors.Jeeves-dev</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>UH3KRKPDYQ</string>
+				<key>name</key>
+				<string>CODE DISRUPTORS, INC.</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

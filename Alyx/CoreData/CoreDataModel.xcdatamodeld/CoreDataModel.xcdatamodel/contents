@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddOns_Entity" representedClassName="AddOns_Entity" syncable="YES">
+        <attribute name="addOn_category" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="addOn_finished_product_ids" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="addOn_guid" optional="YES" attributeType="String"/>
+        <attribute name="addOn_name" optional="YES" attributeType="String"/>
+        <attribute name="addOn_price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="addOn_product_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="addOn_type" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Cart_Entity" representedClassName="Cart_Entity" syncable="YES">
+        <attribute name="cart_created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="cart_discount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="cart_discount_key" optional="YES" attributeType="String"/>
+        <attribute name="cart_discounted_product_cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="cart_final_cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="cart_isChecked" optional="YES" attributeType="Boolean"/>
+        <attribute name="cart_order_id" optional="YES" attributeType="String"/>
+        <attribute name="cart_original_cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="cart_product_cost" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="cart_product_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cart_product_image" optional="YES" attributeType="String"/>
+        <attribute name="cart_product_name" optional="YES" attributeType="String"/>
+        <attribute name="cart_quantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cart_remarks" optional="YES" attributeType="String"/>
+        <attribute name="cart_status" optional="YES" attributeType="String"/>
+        <attribute name="cart_tagged_product" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cart_tax_class" optional="YES" attributeType="String"/>
+        <attribute name="cart_variation_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cart_variation_name" optional="YES" attributeType="String"/>
+        <relationship name="queue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Queue_Entity" inverseName="cart" inverseEntity="Queue_Entity"/>
+    </entity>
+    <entity name="Cart_Last_OrderID_Entity" representedClassName="Cart_Last_OrderID_Entity" syncable="YES">
+        <attribute name="cart_last_order_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Categories_Entity" representedClassName="Categories_Entity" syncable="YES">
+        <attribute name="category_guid" optional="YES" attributeType="String"/>
+        <attribute name="category_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="category_name" optional="YES" attributeType="String"/>
+        <attribute name="category_parent_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Products_Entity" inverseName="category" inverseEntity="Products_Entity"/>
+    </entity>
+    <entity name="Coupons_Entity" representedClassName="Coupons_Entity" syncable="YES">
+        <attribute name="coupon_amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="coupon_amount_percent" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="coupon_code" optional="YES" attributeType="String"/>
+        <attribute name="coupon_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="coupon_title" optional="YES" attributeType="String"/>
+        <attribute name="coupon_type" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Product_Attributes_Entity" representedClassName="Product_Attributes_Entity" syncable="YES">
+        <attribute name="product_attribute_key" optional="YES" attributeType="String"/>
+        <attribute name="product_attribute_name" optional="YES" attributeType="String"/>
+        <attribute name="product_attribute_options" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Products_Entity" inverseName="attributes" inverseEntity="Products_Entity"/>
+    </entity>
+    <entity name="Product_Variations_Entity" representedClassName="Product_Variations_Entity" syncable="YES">
+        <attribute name="product_variation_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="product_variation_name" optional="YES" attributeType="String"/>
+        <attribute name="product_variation_price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Products_Entity" inverseName="variations" inverseEntity="Products_Entity"/>
+        <relationship name="variation_attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Variation_Attributes_Entity" inverseName="product_variation" inverseEntity="Variation_Attributes_Entity"/>
+    </entity>
+    <entity name="Products_Entity" representedClassName="Products_Entity" syncable="YES">
+        <attribute name="product_category" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="product_guid" optional="YES" attributeType="String"/>
+        <attribute name="product_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="product_name" optional="YES" attributeType="String"/>
+        <attribute name="product_price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="product_type" optional="YES" attributeType="String"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product_Attributes_Entity" inverseName="product" inverseEntity="Product_Attributes_Entity"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Categories_Entity" inverseName="products" inverseEntity="Categories_Entity"/>
+        <relationship name="variations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product_Variations_Entity" inverseName="product" inverseEntity="Product_Variations_Entity"/>
+    </entity>
+    <entity name="Queue_Entity" representedClassName="Queue_Entity" syncable="YES">
+        <attribute name="queue_cash_tendered" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="queue_coupon_code" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="queue_coupon_title" optional="YES" attributeType="String"/>
+        <attribute name="queue_created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="queue_order_id" optional="YES" attributeType="String"/>
+        <attribute name="queue_product_ids" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Int]"/>
+        <attribute name="queue_remarks" optional="YES" attributeType="String"/>
+        <attribute name="queue_surcharges" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="cart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Cart_Entity" inverseName="queue" inverseEntity="Cart_Entity"/>
+    </entity>
+    <entity name="Surcharges_Entity" representedClassName="Surcharges_Entity" syncable="YES">
+        <attribute name="surcharge_amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="surcharge_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="surcharge_name" optional="YES" attributeType="String"/>
+        <attribute name="surcharge_tax_class" optional="YES" attributeType="String"/>
+        <attribute name="surcharge_type" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Token_Entity" representedClassName="Token_Entity" syncable="YES">
+        <attribute name="token_user_display_name" optional="YES" attributeType="String"/>
+        <attribute name="token_user_email" optional="YES" attributeType="String"/>
+        <attribute name="token_user_nicename" optional="YES" attributeType="String"/>
+        <attribute name="token_value" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Users_Entity" representedClassName="Users_Entity" syncable="YES">
+        <attribute name="user_access_level" optional="YES" attributeType="String"/>
+        <attribute name="user_email" optional="YES" attributeType="String"/>
+        <attribute name="user_emp_id" optional="YES" attributeType="String"/>
+        <attribute name="user_handles_cash" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="user_image" optional="YES" attributeType="String"/>
+        <attribute name="user_login" optional="YES" attributeType="String"/>
+        <attribute name="user_name" optional="YES" attributeType="String"/>
+        <attribute name="user_pass" optional="YES" attributeType="String"/>
+        <attribute name="user_pin" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="user_roles" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+    </entity>
+    <entity name="Variation_Attributes_Entity" representedClassName="Variation_Attributes_Entity" syncable="YES">
+        <attribute name="variation_attribute_key" optional="YES" attributeType="String"/>
+        <attribute name="variation_attribute_name" optional="YES" attributeType="String"/>
+        <attribute name="variation_attribute_option" optional="YES" attributeType="String"/>
+        <relationship name="product_variation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product_Variations_Entity" inverseName="variation_attributes" inverseEntity="Product_Variations_Entity"/>
+    </entity>
+    <elements>
+        <element name="AddOns_Entity" positionX="-225" positionY="-207" width="128" height="134"/>
+        <element name="Cart_Entity" positionX="-12.31640625" positionY="-138.19921875" width="128" height="329"/>
+        <element name="Cart_Last_OrderID_Entity" positionX="-234" positionY="-198" width="128" height="58"/>
+        <element name="Categories_Entity" positionX="-417.89453125" positionY="-355.27734375" width="192.4453125" height="118"/>
+        <element name="Coupons_Entity" positionX="-225" positionY="-207" width="128" height="119"/>
+        <element name="Product_Attributes_Entity" positionX="-206.01171875" positionY="-329.21875" width="191.33203125" height="103"/>
+        <element name="Product_Variations_Entity" positionX="-222.69140625" positionY="-208.64453125" width="188.28515625" height="118"/>
+        <element name="Products_Entity" positionX="-394.19140625" positionY="-199.65625" width="128" height="178"/>
+        <element name="Queue_Entity" positionX="-402.078125" positionY="40.98046875" width="128" height="164"/>
+        <element name="Surcharges_Entity" positionX="-234" positionY="-198" width="128" height="104"/>
+        <element name="Token_Entity" positionX="-234" positionY="-198" width="128" height="103"/>
+        <element name="Users_Entity" positionX="1.80078125" positionY="-334.28515625" width="128" height="194"/>
+        <element name="Variation_Attributes_Entity" positionX="-216.375" positionY="-25.546875" width="173.90625" height="103"/>
+    </elements>
+</model>
