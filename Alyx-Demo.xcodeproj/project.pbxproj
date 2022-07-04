@@ -137,6 +137,7 @@
 		421323F328225B1D0066C708 /* ReceiptResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421323F228225B1D0066C708 /* ReceiptResponse.swift */; };
 		421E56682837378E003A937A /* CashierBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421E56672837378E003A937A /* CashierBarButtonItem.swift */; };
 		421E566A283749E2003A937A /* CashierInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421E5669283749E2003A937A /* CashierInfoViewModel.swift */; };
+		4227FA6A2873020E00A7189A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4227FA692873020E00A7189A /* GoogleService-Info.plist */; };
 		424DE9F927F0331B00F53A9B /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 424DE9F727F0331B00F53A9B /* CoreDataModel.xcdatamodeld */; };
 		426B58B327EC208600739EC7 /* GetDevicesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B58B227EC208600739EC7 /* GetDevicesResponse.swift */; };
 		426B58B527EC476600739EC7 /* HistoryItemByIDResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B58B427EC476600739EC7 /* HistoryItemByIDResponse.swift */; };
@@ -288,6 +289,7 @@
 		421323F228225B1D0066C708 /* ReceiptResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptResponse.swift; sourceTree = "<group>"; };
 		421E56672837378E003A937A /* CashierBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashierBarButtonItem.swift; sourceTree = "<group>"; };
 		421E5669283749E2003A937A /* CashierInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashierInfoViewModel.swift; sourceTree = "<group>"; };
+		4227FA692873020E00A7189A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		424DE9F827F0331B00F53A9B /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		426B58B227EC208600739EC7 /* GetDevicesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDevicesResponse.swift; sourceTree = "<group>"; };
 		426B58B427EC476600739EC7 /* HistoryItemByIDResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemByIDResponse.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				04A2807127ACC7B300FF1777 /* Views */,
 				04A280DA27ACD07800FF1777 /* ViewModels */,
 				0464B16027ACBCF1007839B4 /* Info.plist */,
+				4227FA692873020E00A7189A /* GoogleService-Info.plist */,
 			);
 			path = "Alyx-Demo";
 			sourceTree = "<group>";
@@ -657,7 +660,6 @@
 				1112CF6C8C72EFE131D7B2C6 /* Pods-Alyx-Demo.debug.xcconfig */,
 				693A669BDFAADF245ABC738B /* Pods-Alyx-Demo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -730,6 +732,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0464B15F27ACBCF1007839B4 /* LaunchScreen.storyboard in Resources */,
+				4227FA6A2873020E00A7189A /* GoogleService-Info.plist in Resources */,
 				0464B15C27ACBCF1007839B4 /* Assets.xcassets in Resources */,
 				0464B15A27ACBCF0007839B4 /* Main.storyboard in Resources */,
 			);
