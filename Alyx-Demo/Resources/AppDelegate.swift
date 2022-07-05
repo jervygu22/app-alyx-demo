@@ -60,6 +60,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.rootViewController = navVC
 //        }
         
+        APICaller.shared.getDemo { result in
+            switch result {
+            case .success(let model):
+                print("AppDelegate getDemo: \(model.demo_mode)")
+                UserDefaults.standard.setValue(model.demo_mode, forKey: Constants.is_demo_build)
+                break
+            case .failure(let error):
+                print("AppDelegate getDemo error: \(error.localizedDescription)")
+                break
+            }
+        }
+        
         if AuthManager.shared.isLoggedIn {
             window.rootViewController = UINavigationController(rootViewController: MenuViewController())
             UINavigationBar.appearance().barTintColor = .black  // solid color

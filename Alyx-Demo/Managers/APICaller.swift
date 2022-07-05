@@ -1262,6 +1262,41 @@ final class APICaller {
     }
     
     
+    public func getDemo(completion: @escaping(Result<DemoData, Error>) -> Void) {
+        guard let cachedDomainName = UserDefaults.standard.string(forKey: "domain_name") else {
+            print("getMenuCategories No cachedDomainName")
+            return
+        }
+    
+//        let urlString = "\(Constants.https)\(cachedDomainName)\(Constants.httpsAuthV1)/products/categories?device_id=\(cachedDeviceID)"
+        let urlString = "\(Constants.https)\(cachedDomainName)\(Constants.httpsAuthV1)/demo/ios"
+        //https://alyx.codedisruptors.com/demofranchise/wp-json/jwt-auth/v1/jeeves/demo/ios
+        
+        print("getDemo urlString: \(urlString)")
+        
+//        createRequestWithToken2(with: URL(string: urlString), with: .GET) { baseRequest in
+        createRequest(with: URL(string: urlString), with: .GET) { baseRequest in
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                do {
+//                    let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    let result = try JSONDecoder().decode(DemoResponse.self, from: data)
+                    print("getDemo Response: \(result)")
+                    completion(.success(result.data))
+                } catch {
+                    print("getDemo: \(error.localizedDescription)")
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    
+    
 // MARK: - FAKE APICALLs
     
     public func getNewShifts(completion: @escaping(Result<NewEmployeeShiftsResponse, Error>) -> Void) {

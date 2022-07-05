@@ -314,7 +314,7 @@ class ContactUsViewController: UIViewController, UITextFieldDelegate {
         
         submitButton.frame = CGRect(
             x: 10 + view.safeAreaInsets.left,
-            y: view.height - submitButtonHeight - view.safeAreaInsets.bottom,
+            y: view.height - submitButtonHeight - view.safeAreaInsets.bottom - 10,
             width: view.width - 20 - view.safeAreaInsets.left - view.safeAreaInsets.right,
             height: submitButtonHeight)
     }

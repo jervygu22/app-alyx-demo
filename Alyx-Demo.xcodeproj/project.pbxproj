@@ -132,6 +132,7 @@
 		04C1DA4327D7543A002239AF /* Token_Entity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C1DA4127D7543A002239AF /* Token_Entity+CoreDataProperties.swift */; };
 		196677C72AB0443D00E89B6F /* Pods_Alyx_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48BE986215CD057839D121E /* Pods_Alyx_Demo.framework */; };
 		4207216D2847266900C2029F /* AddOnsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4207216C2847266900C2029F /* AddOnsCollectionViewCell.swift */; };
+		420DE133287419AE00B893E0 /* DemoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420DE132287419AE00B893E0 /* DemoResponse.swift */; };
 		420FA3F72860008D007C7627 /* AttendanceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420FA3F62860008D007C7627 /* AttendanceResponse.swift */; };
 		421323F12822131D0066C708 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421323F02822131D0066C708 /* ReceiptViewController.swift */; };
 		421323F328225B1D0066C708 /* ReceiptResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421323F228225B1D0066C708 /* ReceiptResponse.swift */; };
@@ -284,6 +285,7 @@
 		04C1DA4127D7543A002239AF /* Token_Entity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Token_Entity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1112CF6C8C72EFE131D7B2C6 /* Pods-Alyx-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alyx-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Alyx-Demo/Pods-Alyx-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		4207216C2847266900C2029F /* AddOnsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOnsCollectionViewCell.swift; sourceTree = "<group>"; };
+		420DE132287419AE00B893E0 /* DemoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoResponse.swift; sourceTree = "<group>"; };
 		420FA3F62860008D007C7627 /* AttendanceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceResponse.swift; sourceTree = "<group>"; };
 		421323F02822131D0066C708 /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		421323F228225B1D0066C708 /* ReceiptResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptResponse.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				045AC8C127C72CD9006CA46A /* AddOnsResponse.swift */,
 				426B58B627EC48EA00739EC7 /* VoidOrderModel.swift */,
 				421323F228225B1D0066C708 /* ReceiptResponse.swift */,
+				420DE132287419AE00B893E0 /* DemoResponse.swift */,
 			);
 			path = "API Routes";
 			sourceTree = "<group>";
@@ -874,6 +877,7 @@
 				04A2813827ACD6DC00FF1777 /* HistorySearchResultsViewController.swift in Sources */,
 				04A280B327ACCE1100FF1777 /* QueueTableViewCell.swift in Sources */,
 				0410C53227C3858D003BC7A0 /* Product_Attributes_Entity+CoreDataProperties.swift in Sources */,
+				420DE133287419AE00B893E0 /* DemoResponse.swift in Sources */,
 				04A2809E27ACCC2E00FF1777 /* CategoryCollectionViewCell.swift in Sources */,
 				04A280C727ACCEAF00FF1777 /* TransactionTypeCollectionViewCell.swift in Sources */,
 				0410C53527C3858D003BC7A0 /* Cart_Entity+CoreDataClass.swift in Sources */,

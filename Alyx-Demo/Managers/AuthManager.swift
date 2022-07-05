@@ -63,6 +63,11 @@ final class AuthManager {
         return storedToken
     }()
     
+    public var isDemoBuild: Bool? = {
+        return UserDefaults.standard.bool(forKey: Constants.is_demo_build)
+//        return false
+    }()
+    
     public var cachedDeviceID: String? = {
         return UserDefaults.standard.string(forKey: "generated_device_id")
     }()
@@ -128,6 +133,19 @@ final class AuthManager {
     
     public func cacheToken(result: AuthResponse) {
         UserDefaults.standard.setValue(result.token, forKey: "access_token")
+    }
+    
+    public func checkIfDemo2() {
+        APICaller.shared.getDemo { result in
+            switch result {
+            case .success(let model):
+                print("checkIfDemo: \(model.demo_mode)")
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+                break
+            }
+        }
     }
     
     public func shouldClearSavedUserData() {

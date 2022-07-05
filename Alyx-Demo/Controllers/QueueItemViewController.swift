@@ -220,6 +220,24 @@ class QueueItemViewController: UIViewController {
         return label
     }()
     
+    private let demoLabelContainer: UIView = {
+        let view = UIView(frame: .zero)
+//        view.layer.masksToBounds = true
+//        view.clipsToBounds = true
+        view.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 4)
+        return view
+    }()
+    
+    private let demoLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = Constants.whiteLabelColor
+        label.font = .systemFont(ofSize: 18, weight: .heavy)
+        label.text = "DEMO"
+        label.textAlignment = .center
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.whiteBackgroundColor
@@ -239,6 +257,37 @@ class QueueItemViewController: UIViewController {
         view.addSubview(bottomContainer)
         configureBottomContainer()
         configureBottomContainerData()
+        
+        let isDemo = UserDefaults.standard.bool(forKey: Constants.is_demo_build)
+        if isDemo {
+            addDemoLabel()
+        }
+    }
+    
+    private func addDemoLabel() {
+        view.addSubview(demoLabelContainer)
+        demoLabelContainer.addSubview(demoLabel)
+    }
+    
+    private func layoutDemoLabel() {
+        let demoLabelContainerHeight: CGFloat = 30
+        let demoLabelContainerWidth = demoLabelContainerHeight * 2
+        demoLabelContainer.frame = CGRect(
+            x: view.width-demoLabelContainerWidth,
+            y: view.height-demoLabelContainerWidth,
+            width: demoLabelContainerWidth,
+            height: demoLabelContainerHeight*2)
+        demoLabelContainer.backgroundColor = .gray
+        
+        demoLabel.sizeToFit()
+        demoLabel.frame = CGRect(
+            x: -(demoLabelContainerWidth*1.5),
+            y: demoLabelContainerHeight/1.5,
+            width: demoLabelContainerWidth*3,
+            height: demoLabelContainerHeight)
+        demoLabel.backgroundColor = .systemRed
+//        demoLabel.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        demoLabel.backgroundColor = UIColor.red.withAlphaComponent(0.75)
     }
     
     @objc func didTapHome() {
@@ -308,6 +357,7 @@ class QueueItemViewController: UIViewController {
         cashTenderedValueLabel.frame = CGRect(x: cashTenderedLabel.right, y: totalValueLabel.bottom, width: labelWidth, height: labelHeight)
         changeValueLabel.frame = CGRect(x: changeLabel.right, y: cashTenderedValueLabel.bottom, width: labelWidth, height: labelHeight)
         
+        layoutDemoLabel()
     }
     
     func configureBottomContainer() {

@@ -17,10 +17,10 @@ enum MenuSectionType {
     var title: String {
         switch self {
         case .categorySection:
-            return "Categories"
+            return "Choose Category" // "Categories"
         case .productSection:
             if MenuViewController.categoryName == nil {
-                return "All" //"All Menu"
+                return "All Products" //"All Menu"
             } else {
                 let name = MenuViewController.categoryName ?? "category name not found"
                 return "\(name)" //"\(name) Menu"
@@ -109,7 +109,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         var imageName: String {
             switch self {
             case .Menu:
-                return "fork.knife" // "house.fill"
+                return "house.fill" // "fork.knife"
             case .History:
                 return "clock.arrow.circlepath"
             case .Account:
@@ -185,6 +185,25 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
     private var checkDomainBarButton = UIBarButtonItem()
     
     private var cashierNavBarButton = [UIBarButtonItem]()
+    
+    
+    private let demoLabelContainer: UIView = {
+        let view = UIView(frame: .zero)
+//        view.layer.masksToBounds = true
+//        view.clipsToBounds = true
+        view.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 4)
+        return view
+    }()
+    
+    private let demoLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = Constants.whiteLabelColor
+        label.font = .systemFont(ofSize: 18, weight: .heavy)
+        label.text = "DEMO"
+        label.textAlignment = .center
+        return label
+    }()
     
     override func loadView() {
         super.loadView()
@@ -331,6 +350,29 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         
         let isInitialSent = UserDefaults.standard.bool(forKey: Constants.is_initial_sent)
         print("isInitialSent: \(isInitialSent)")
+        
+        let isDemo = UserDefaults.standard.bool(forKey: Constants.is_demo_build)
+        if isDemo {
+            addDemoLabel()
+        }
+    }
+    
+    private func fetchDemo() {
+        APICaller.shared.getDemo { result in
+            switch result {
+            case .success(let model):
+                print("fetchDemo: \(model.demo_mode)")
+                break
+            case .failure(let error):
+                print("fetchDemo: \(error.localizedDescription)")
+                break
+            }
+        }
+    }
+    
+    private func addDemoLabel() {
+        view.addSubview(demoLabelContainer)
+        demoLabelContainer.addSubview(demoLabel)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -420,13 +462,36 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         
         createCoreDataToDisplay()
         populateFromCoreData()
-        passCategoryName(with: "All")
+        passCategoryName(with: "All Products")
+    }
+    
+    private func layoutDemoLabel() {
+        let demoLabelContainerHeight: CGFloat = 30
+        let demoLabelContainerWidth = demoLabelContainerHeight * 2
+        demoLabelContainer.frame = CGRect(
+            x: view.width-demoLabelContainerWidth,
+            y: view.height-demoLabelContainerWidth,
+            width: demoLabelContainerWidth,
+            height: demoLabelContainerHeight*2)
+        demoLabelContainer.backgroundColor = .gray
+        
+        demoLabel.sizeToFit()
+        demoLabel.frame = CGRect(
+            x: -(demoLabelContainerWidth*1.5),
+            y: demoLabelContainerHeight/1.5,
+            width: demoLabelContainerWidth*3,
+            height: demoLabelContainerHeight)
+        demoLabel.backgroundColor = .systemRed
+//        demoLabel.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        demoLabel.backgroundColor = UIColor.red.withAlphaComponent(0.75)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
         collectionView.backgroundColor = Constants.vcBackgroundColor
+        
+        layoutDemoLabel()
     }
     
     private func fetchAddons() {
@@ -1391,7 +1456,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
                 self.collectionView.refreshControl?.endRefreshing()
                 self.collectionView.reloadData()
                 self.postCartCountNotification(with: self.cart.count)
-                self.passCategoryName(with: "All")
+                self.passCategoryName(with: "All Products")
             }
         } catch {
             // error
@@ -1892,7 +1957,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         if sections.count == 2 || sections.count > 1  { // only 2 section
             sections.removeLast()
             
-            if categoryName.lowercased() == "all" || categoryID == 33 {
+            if categoryName.lowercased() == "all" || categoryID == 0 {
                 productsArray = filteringProductsArray
                 sections.append(.productSection(viewModels: productsArray.compactMap({
                     return CategoryItemsCellViewModel(
@@ -2196,7 +2261,12 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             let category = categoryArray[indexPath.row]
             
-            passCategoryName(with: category.name)
+            if category.name.lowercased() == "all" {
+                passCategoryName(with: "\(category.name) Products")
+                print("category.name.lowercased", category.name.lowercased())
+            } else {
+                passCategoryName(with: category.name)
+            }
             
 //            print("didSelectItemAt sections:", sections.count, "productsArray:", productsArray.count)
             
@@ -2255,7 +2325,7 @@ extension MenuViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let section = indexPath.section
             let sectionModel = sections[section]
             
-            header.configure(sectionTitle: sectionModel.title, categoryName: MenuViewController.categoryName ?? "All", resultCount: model.count)
+            header.configure(sectionTitle: sectionModel.title, categoryName: MenuViewController.categoryName ?? "All Products", resultCount: model.count)
             return header
         }
     }

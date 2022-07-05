@@ -41,7 +41,7 @@ class ProgressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Constants.vcBackgroundColor
         view.addSubview(logoImageView)
         
         createSpinnerView()
@@ -62,6 +62,12 @@ class ProgressViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        let logoImageViewSize: CGFloat = 240
+        logoImageView.frame = CGRect(
+            x: (view.width-logoImageViewSize) / 2,
+            y: (view.height-logoImageViewSize) / 2,
+            width: logoImageViewSize,
+            height: logoImageViewSize)
     }
     
     private func saveAccessTokens() {
@@ -129,6 +135,15 @@ class ProgressViewController: UIViewController {
                         user_roles: superUser.user_roles,
                         user_access_level: "supervisor"))
                     
+                    
+                    DispatchQueue.main.async {
+                        // then remove the spinner view controller
+                        self?.child.willMove(toParent: nil)
+                        self?.child.view.removeFromSuperview()
+                        self?.child.removeFromParent()
+//                        self?.goToMenu()
+                    }
+                    
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -151,14 +166,14 @@ class ProgressViewController: UIViewController {
         UserDefaults.standard.setValue(user.user_handles_cash, forKey: Constants.is_user_handle_cash)
         UserDefaults.standard.setValue(user.user_roles, forKey: Constants.user_role)
         UserDefaults.standard.setValue(user.user_emp_id, forKey: Constants.user_emp_id)
-        
-        DispatchQueue.main.async {
-            // then remove the spinner view controller
-            self.child.willMove(toParent: nil)
-            self.child.view.removeFromSuperview()
-            self.child.removeFromParent()
-            self.goToMenu()
-        }
+    
+//        DispatchQueue.main.async {
+//            // then remove the spinner view controller
+//            self.child.willMove(toParent: nil)
+//            self.child.view.removeFromSuperview()
+//            self.child.removeFromParent()
+//            self.goToMenu()
+//        }
     }
     
     private func goToMenu() {
