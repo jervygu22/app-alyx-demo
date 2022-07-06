@@ -17,7 +17,7 @@ enum MenuSectionType {
     var title: String {
         switch self {
         case .categorySection:
-            return "Choose Category" // "Categories"
+            return "Choose a Category" // "Categories"
         case .productSection:
             if MenuViewController.categoryName == nil {
                 return "All Products" //"All Menu"
@@ -50,7 +50,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
     public let notifVC = NotificationViewController()
     public let settingsVC = SettingsViewController()
     public let contactUs = ContactUsViewController()
-    public let termsCondition = WebViewController()
+    public let termsAgreement = WebViewController()
     
     private var fetchCategories: [Category] = []
     private var fetchedProducts: [Product] = []
@@ -102,7 +102,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         case Account = "Account"
         case Queue = "Queue"
         case Notification = "Notification"
-        case TermsCondition = "Terms & Condition"
+        case TermsAgreement = "Terms & Agreement"
         case Settings = "Settings"
         case Logout = "Logout"
         
@@ -118,7 +118,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
                 return "arrow.clockwise.icloud.fill"
             case .Notification:
                 return "bell.fill"
-            case .TermsCondition:
+            case .TermsAgreement:
                 return "checkmark.shield.fill"
             case .Settings:
                 return "gearshape.fill"
@@ -1655,7 +1655,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         accountVC.accountViewControllerDelegate = self
         addChild(queueVC)
         addChild(notifVC)
-        addChild(termsCondition)
+        addChild(termsAgreement)
         addChild(contactUs)
         addChild(settingsVC)
         
@@ -1664,7 +1664,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         view.addSubview(accountVC.view)
         view.addSubview(queueVC.view)
         view.addSubview(notifVC.view)
-        view.addSubview(termsCondition.view)
+        view.addSubview(termsAgreement.view)
         view.addSubview(contactUs.view)
         view.addSubview(settingsVC.view)
         /// setting frame to be the entirety of the screen
@@ -1672,7 +1672,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         accountVC.view.frame = view.bounds
         queueVC.view.frame = view.bounds
         notifVC.view.frame = view.bounds
-        termsCondition.view.frame = view.bounds
+        termsAgreement.view.frame = view.bounds
         contactUs.view.frame = view.bounds
         settingsVC.view.frame = view.bounds
         /// moved to be a child under the parent itself MenuVC
@@ -1680,7 +1680,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         accountVC.didMove(toParent: self)
         queueVC.didMove(toParent: self)
         notifVC.didMove(toParent: self)
-        termsCondition.didMove(toParent: self)
+        termsAgreement.didMove(toParent: self)
         contactUs.didMove(toParent: self)
         settingsVC.didMove(toParent: self)
         
@@ -1697,7 +1697,7 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
         
         queueVC.view.isHidden = true
         notifVC.view.isHidden = true
-        termsCondition.view.isHidden = true
+        termsAgreement.view.isHidden = true
         contactUs.view.isHidden = true
         settingsVC.view.isHidden = true
     }
@@ -2487,7 +2487,7 @@ extension MenuViewController {
             accountVC.view.isHidden = true
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
-            termsCondition.view.isHidden = true
+            termsAgreement.view.isHidden = true
             contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             break
@@ -2499,7 +2499,7 @@ extension MenuViewController {
             accountVC.view.isHidden = true
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
-            termsCondition.view.isHidden = true
+            termsAgreement.view.isHidden = true
             contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             break
@@ -2511,7 +2511,7 @@ extension MenuViewController {
             accountVC.view.isHidden = false
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
-            termsCondition.view.isHidden = true
+            termsAgreement.view.isHidden = true
             contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             
@@ -2529,7 +2529,7 @@ extension MenuViewController {
             accountVC.view.isHidden = true
             queueVC.view.isHidden = false
             notifVC.view.isHidden = true
-            termsCondition.view.isHidden = true
+            termsAgreement.view.isHidden = true
             contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             
@@ -2548,14 +2548,14 @@ extension MenuViewController {
 //            contactUs.view.isHidden = true
 //            settingsVC.view.isHidden = true
 //            break
-        case .termsCondition:
+        case .termsAgreement:
             navigationItem.searchController = nil
             navigationItem.rightBarButtonItems = nil
             historyVC.view.isHidden = true
             accountVC.view.isHidden = true
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
-            termsCondition.view.isHidden = false
+            termsAgreement.view.isHidden = false
             contactUs.view.isHidden = true
             settingsVC.view.isHidden = true
             break
@@ -2566,7 +2566,7 @@ extension MenuViewController {
             accountVC.view.isHidden = true
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
-            termsCondition.view.isHidden = true
+            termsAgreement.view.isHidden = true
             contactUs.view.isHidden = false
             settingsVC.view.isHidden = true
             break
@@ -2577,7 +2577,7 @@ extension MenuViewController {
             accountVC.view.isHidden = true
             queueVC.view.isHidden = true
             notifVC.view.isHidden = true
-            termsCondition.view.isHidden = true
+            termsAgreement.view.isHidden = true
             contactUs.view.isHidden = true
             settingsVC.view.isHidden = false
             break

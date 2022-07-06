@@ -533,17 +533,17 @@ class CartViewController: UIViewController, CashMethodViewControllerDelegate, Ca
         cashierInfoContainer.isHidden = cashierName == nil
         imageContainer.isHidden = cashierName == nil
         
+        
+        /// tap gesture to cashier
         let imageTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapUserImage))
         imageTapGesture.numberOfTapsRequired = 1
-        
         let containerTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapUserImage))
         containerTapGesture.numberOfTapsRequired = 1
         
-        imageContainer.isUserInteractionEnabled = true
-        imageContainer.addGestureRecognizer(imageTapGesture)
-        
-        cashierInfoContainer.isUserInteractionEnabled = true
-        cashierInfoContainer.addGestureRecognizer(containerTapGesture)
+//        imageContainer.isUserInteractionEnabled = true
+//        imageContainer.addGestureRecognizer(imageTapGesture)
+//        cashierInfoContainer.isUserInteractionEnabled = true
+//        cashierInfoContainer.addGestureRecognizer(containerTapGesture)
         
         
     }

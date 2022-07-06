@@ -49,6 +49,14 @@ class OrdersTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let itemPriceLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.numberOfLines = 0
+        label.textColor = Constants.secondaryDarkLabelColor
+        return label
+    }()
+    
     private let finalItemPriceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .semibold)
@@ -79,7 +87,8 @@ class OrdersTableViewCell: UITableViewCell {
         contentView.addSubview(rightContainer)
         
         midContainer.addSubview(nameLabel)
-        midContainer.addSubview(qtyLabel)
+//        midContainer.addSubview(qtyLabel)
+        midContainer.addSubview(itemPriceLabel)
         
         rightContainer.addSubview(finalItemPriceLabel)
         rightContainer.addSubview(originalPriceLabel)
@@ -95,19 +104,22 @@ class OrdersTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         let imageSize: CGFloat = contentView.height-20
-        let midContainerWidth: CGFloat = (contentView.width/2)
-        let rightContainerWidth: CGFloat = (contentView.width/2)-imageSize-30-15
+        
+        let rightContainerWidth: CGFloat = 100 //(contentView.width/2)-imageSize-30-15
+        
+        let midContainerWidth: CGFloat =  contentView.width - imageSize - rightContainerWidth - 30 - 10// (contentView.width/2) + 5
         
         productImage.frame = CGRect(
-            x: !isAddon ? 15 : 15 + (imageSize/2),// 15,
+            x: !isAddon ? 15 : 15 + (imageSize) + 10,// 15, !isAddon ? 15 : 15 + (imageSize/2),// 15,
             y: 10,
             width: imageSize,
             height: imageSize)
+//        productImage.backgroundColor = .green
         
         midContainer.frame = CGRect(
-            x: productImage.right+15,
+            x: productImage.right+10,
             y: 10,
-            width: !isAddon ? midContainerWidth : midContainerWidth - (imageSize/2), //midContainerWidth,
+            width: !isAddon ? midContainerWidth : midContainerWidth - (imageSize) - 10, //midContainerWidth, !isAddon ? midContainerWidth : midContainerWidth - (imageSize/2), //midContainerWidth,
             height: contentView.height-20)
 //        midContainer.backgroundColor = .systemPink
         
@@ -118,11 +130,18 @@ class OrdersTableViewCell: UITableViewCell {
             height: midContainer.height*0.60) //midContainer.height/2
 //        nameLabel.backgroundColor = .systemRed
         
-        qtyLabel.frame = CGRect(
+        itemPriceLabel.frame = CGRect(
             x: 0,
             y: nameLabel.bottom,
             width: midContainer.width,
             height: midContainer.height*0.40)
+//        itemPriceLabel.backgroundColor = .systemBlue
+        
+//        qtyLabel.frame = CGRect(
+//            x: 0,
+//            y: nameLabel.bottom,
+//            width: midContainer.width,
+//            height: midContainer.height*0.40)
 //        qtyLabel.backgroundColor = .systemBlue
         
         rightContainer.frame = CGRect(
@@ -153,6 +172,7 @@ class OrdersTableViewCell: UITableViewCell {
         super.prepareForReuse()
         productImage.image = nil
         nameLabel.text = nil
+        itemPriceLabel.text = nil
         qtyLabel.text = nil
         finalItemPriceLabel.text = nil
         originalPriceLabel.text = nil
@@ -160,8 +180,10 @@ class OrdersTableViewCell: UITableViewCell {
     
     func configure(with viewModel: OrdersTableViewCellViewModel) {
         productImage.sd_setImage(with: URL(string: viewModel.image), completed: nil)
-        nameLabel.text = "\(viewModel.name)"
+        nameLabel.text = "\(viewModel.name) x\(viewModel.quantity)"
         qtyLabel.text = "x\(viewModel.quantity)"
+        itemPriceLabel.text = String(format:"₱%.2f", viewModel.itemPrice)
+        
 //        finalItemPriceLabel.text = viewModel.originalPrice
         let thisFinalPrice = viewModel.discount == 0 ? viewModel.originalPrice : viewModel.finalPrice
         finalItemPriceLabel.text = String(format:"₱%.2f", thisFinalPrice)

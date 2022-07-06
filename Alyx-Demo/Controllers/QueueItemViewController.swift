@@ -501,7 +501,8 @@ extension QueueItemViewController: UITableViewDelegate, UITableViewDataSource {
             quantity: Int(model.cart_quantity),
             finalPrice: model.cart_discounted_product_cost,
             originalPrice: model.cart_product_cost,
-            discount: nil))
+            discount: nil,
+            itemPrice: model.cart_product_cost))
         
         return cell
     }
@@ -522,6 +523,12 @@ extension QueueItemViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.red
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = Constants.darkGrayColor
     }
     
 }

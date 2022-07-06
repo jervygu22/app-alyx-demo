@@ -179,6 +179,18 @@ class ContactUsViewController: UIViewController, UITextFieldDelegate {
         button.layer.masksToBounds = true
         return button
     }()
+    
+    
+    private let footerLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = Constants.darkGrayColor
+        label.font = .systemFont(ofSize: 12, weight: .light)
+        label.font = .italicSystemFont(ofSize: 12)
+        label.text = "Upon submitting your details, our sales team\nwill contact you within 1-2 business days."
+        label.textAlignment = .center
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,6 +215,7 @@ class ContactUsViewController: UIViewController, UITextFieldDelegate {
         container.addSubview(locationLabel)
         container.addSubview(locationTextField)
         
+        view.addSubview(footerLabel)
         view.addSubview(submitButton)
         
         nameTextField.delegate = self
@@ -312,10 +325,17 @@ class ContactUsViewController: UIViewController, UITextFieldDelegate {
             width: container.width,
             height: fieldHeight)
         
+        
         submitButton.frame = CGRect(
             x: 10 + view.safeAreaInsets.left,
             y: view.height - submitButtonHeight - view.safeAreaInsets.bottom - 10,
             width: view.width - 20 - view.safeAreaInsets.left - view.safeAreaInsets.right,
+            height: submitButtonHeight)
+        
+        footerLabel.frame = CGRect(
+            x: 10,
+            y: submitButton.top - submitButtonHeight - 10,
+            width: view.width - 20,
             height: submitButtonHeight)
     }
     

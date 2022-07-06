@@ -15,5 +15,6 @@ struct OrdersTableViewCellViewModel {
     let originalPrice: Double
     
     let discount: Double?
+    let itemPrice: Double
 }
 

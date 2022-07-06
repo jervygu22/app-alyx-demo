@@ -8,11 +8,15 @@
 import UIKit
 
 class ProgressViewController: UIViewController {
+    static let shared = ProgressViewController()
     
     private let child = SpinnerViewController()
     
     private var authResponse: AuthResponse?
     private var deviceID: String?
+    
+    private var accessToken: String?
+    private var accessToken2: String?
     
     
     private var registeredDevices: [GetDeviceData]?
@@ -71,11 +75,12 @@ class ProgressViewController: UIViewController {
     }
     
     private func saveAccessTokens() {
-        APICaller.shared.getTokenWithDomain(with: Constants.demo_franchise_name) { result in
+        APICaller.shared.getTokenWithDomain(with: Constants.demo_franchise_name) { [weak self] result in
             switch result {
             case .success(let model):
                 print("Success caching token: \(model.token)")
                 UserDefaults.standard.setValue(model.token, forKey: Constants.access_token)
+                self?.accessToken = model.token
                 break
             case .failure(let error):
                 print("Failed to get access token: \(error.localizedDescription)")
@@ -87,7 +92,7 @@ class ProgressViewController: UIViewController {
             case .success(let model):
                 print("Success caching token2: \(model.token)")
                 UserDefaults.standard.setValue(model.token, forKey: Constants.access_token2)
-                
+                self?.accessToken2 = model.token
                 self?.fetchDevices()
                 
                 break
@@ -106,6 +111,7 @@ class ProgressViewController: UIViewController {
                 if let device = model.data.first(where: { $0.device_id == Constants.demo_device_id && $0.device_id_status }) {
                     self?.saveMachineID(with: device)
                     self?.fetchUsers()
+                    self?.fetchIsDemo()
                 }
                 break
             case .failure(let error):
@@ -135,18 +141,26 @@ class ProgressViewController: UIViewController {
                         user_roles: superUser.user_roles,
                         user_access_level: "supervisor"))
                     
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                        // then remove the spinner view controller
+//                        self?.child.willMove(toParent: nil)
+//                        self?.child.view.removeFromSuperview()
+//                        self?.child.removeFromParent()
+//                        self?.goToMenu()
+//                    }
                     
                     DispatchQueue.main.async {
                         // then remove the spinner view controller
                         self?.child.willMove(toParent: nil)
                         self?.child.view.removeFromSuperview()
                         self?.child.removeFromParent()
-//                        self?.goToMenu()
+                        self?.goToMenu()
                     }
-                    
                 }
+                break
             case .failure(let error):
                 print(error.localizedDescription)
+                break
             }
         }
     }
@@ -189,6 +203,20 @@ class ProgressViewController: UIViewController {
         present(navVC, animated: true, completion: { [weak self] in
             self?.navigationController?.popToRootViewController(animated: false)
         })
+    }
+    
+    public func fetchIsDemo() {
+        APICaller.shared.getDemo { result in
+            switch result {
+            case .success(let model):
+                print("fetchIsDemo: \(model.demo_mode)")
+                UserDefaults.standard.setValue(model.demo_mode, forKey: Constants.is_demo_build)
+                break
+            case .failure(let error):
+                print("fetchIsDemo error: \(error.localizedDescription)")
+                break
+            }
+        }
     }
     
     public func createSpinnerView() {

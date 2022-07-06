@@ -689,7 +689,8 @@ extension HistoryItemViewController: UITableViewDelegate, UITableViewDataSource 
                 quantity: model.quantity,
                 finalPrice: model.total,
                 originalPrice:  doubledOrigPrice,
-                discount: model.discount)
+                discount: model.discount,
+                itemPrice: model.price)
             )
         }
         
@@ -712,6 +713,12 @@ extension HistoryItemViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40//UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.red
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = Constants.darkGrayColor
     }
     
 }

@@ -22,7 +22,7 @@ enum DrawerItems: String, CaseIterable {
     case account = "Account"
     case queue = "Queue"
 //    case notification = "Notification"
-    case termsCondition = "Terms & Condition"
+    case termsAgreement = "Terms & Agreement"
     case contactUs = "Contact Us"
     case settings = "Settings"
 //    case logout = "Logout"
@@ -39,7 +39,7 @@ enum DrawerItems: String, CaseIterable {
             return QueueViewController()
 //        case .notification:
 //            return NotificationViewController()
-        case .termsCondition:
+        case .termsAgreement:
             return WebViewController()
         case .contactUs:
             return ContactUsViewController()
@@ -62,7 +62,7 @@ enum DrawerItems: String, CaseIterable {
             return "arrow.clockwise.icloud.fill"
 //        case .notification:
 //            return "bell.fill"
-        case .termsCondition:
+        case .termsAgreement:
             return "checkmark.shield.fill"
         case .contactUs:
             return "ic_contact_us" // "questionmark.circle.fill"
