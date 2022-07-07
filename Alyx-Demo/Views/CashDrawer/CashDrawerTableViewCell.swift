@@ -18,7 +18,7 @@ class CashDrawerTableViewCell: UITableViewCell {
         label.textColor = Constants.blackLabelColor
         label.font = .systemFont(ofSize: 20, weight: .medium)
         label.text = "Bill"
-        label.textAlignment = .right
+        label.textAlignment = .left
         return label
     }()
     
@@ -35,7 +35,7 @@ class CashDrawerTableViewCell: UITableViewCell {
     public let billCountTextField: UITextField = {
         let textField = UITextField(frame: .zero)
         textField.textColor = Constants.blackLabelColor
-        textField.backgroundColor = Constants.vcBackgroundColor
+        textField.backgroundColor = .white
         
         textField.textAlignment = .left
         textField.borderStyle = .roundedRect
@@ -44,6 +44,12 @@ class CashDrawerTableViewCell: UITableViewCell {
         textField.autocorrectionType = .no
         textField.returnKeyType = .default
         textField.keyboardType = .numberPad
+        
+        textField.layer.masksToBounds = true
+        textField.textAlignment = .center
+        textField.layer.borderColor = Constants.darkGrayCGColor
+        textField.layer.borderWidth = 1.0
+        textField.layer.cornerRadius = 4
         
         textField.attributedPlaceholder = NSAttributedString(
             string: "0",
@@ -75,12 +81,12 @@ class CashDrawerTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = Constants.whiteBackgroundColor
+        backgroundColor = Constants.vcBackgroundColor
         
         contentView.addSubview(billLabel)
-        contentView.addSubview(timesLabel)
+//        contentView.addSubview(timesLabel)
         contentView.addSubview(billCountTextField)
-        contentView.addSubview(equalLabel)
+//        contentView.addSubview(equalLabel)
         contentView.addSubview(totalLabel)
         
         billCountTextField.delegate = self
@@ -95,37 +101,42 @@ class CashDrawerTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let labelWidth = contentView.width/4
+        let billCountTextFieldWidth: CGFloat = 80
+        let billLabelWidth = contentView.width/4
+        let totalLabelWidth = contentView.width - billCountTextFieldWidth - billLabelWidth
         
         billCountTextField.frame = CGRect(
             x: 16,
             y: 5,
-            width: labelWidth,
+            width: billCountTextFieldWidth,
             height: contentView.height-10)
+//        billCountTextField.backgroundColor = .red
         
-        timesLabel.frame = CGRect(
-            x: billCountTextField.right+10,
-            y: 5,
-            width: 15,
-            height: contentView.height-10)
+//        timesLabel.frame = CGRect(
+//            x: billCountTextField.right+10,
+//            y: 5,
+//            width: 15,
+//            height: contentView.height-10)
         
         billLabel.frame = CGRect( //billLabel
-            x: timesLabel.right+10,
+            x: billCountTextField.right+10, // timesLabel.right+10,
             y: 5,
-            width: labelWidth,
+            width: billLabelWidth,
             height: contentView.height-10)
+//        billLabel.backgroundColor = .green
         
-        equalLabel.frame = CGRect(
-            x: billLabel.right+10,
-            y: 5,
-            width: 15,
-            height: contentView.height-10)
+//        equalLabel.frame = CGRect(
+//            x: billLabel.right+10,
+//            y: 5,
+//            width: 15,
+//            height: contentView.height-10)
         
         totalLabel.frame = CGRect(
-            x: equalLabel.right+10,
+            x: billLabel.right + 10,//equalLabel.right+10,
             y: 5,
-            width: contentView.width-billLabel.width-10-timesLabel.width-10-billCountTextField.width-10-equalLabel.width-10-32,
+            width: totalLabelWidth - 10 - 10 - 32, //contentView.width-billLabel.width-10-timesLabel.width-10-billCountTextField.width-10-equalLabel.width-10-32,
             height: contentView.height-10)
+//        totalLabel.backgroundColor = .blue
     }
     
     override func prepareForReuse() {

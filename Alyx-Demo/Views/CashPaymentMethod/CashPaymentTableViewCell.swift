@@ -53,7 +53,7 @@ class CashPaymentTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = Constants.whiteBackgroundColor
+        backgroundColor = Constants.vcBackgroundColor
         contentView.clipsToBounds = true
         contentView.layer.masksToBounds = true
         
@@ -78,24 +78,25 @@ class CashPaymentTableViewCell: UITableViewCell {
         let qtyPriceWidth: CGFloat = ((contentView.width/2)-imageSize)/2
         
         productImage.frame = CGRect(
-            x: !isAddon ? 15 : 15 + (imageSize/2), // 15
+            x: !isAddon ? 15 : 15 + imageSize + 10, // 15  //!isAddon ? 15 : 15 + (imageSize/2)
             y: 10,
             width: imageSize,
             height: imageSize)
+//        productImage.backgroundColor = .green
         
         nameLabel.frame = CGRect(
             x: productImage.right+10,
             y: 10,
-            width: !isAddon ? nameLabelWidth : nameLabelWidth - (imageSize/2), //nameLabelWidth,
+            width: !isAddon ? nameLabelWidth : nameLabelWidth - imageSize - 10, //nameLabelWidth, //!isAddon ? nameLabelWidth : nameLabelWidth - (imageSize/2),
             height: contentView.height-20)
-//        nameLabel.backgroundColor = .lightGray
+//        nameLabel.backgroundColor = .blue
         
         qtyLabel.frame = CGRect(
             x: nameLabel.right+10,
             y: 10,
             width: qtyPriceWidth-10-25,
             height: contentView.height-20)
-//        qtyLabel.backgroundColor = .yellow
+//        qtyLabel.backgroundColor = .red
         
         priceLabel.frame = CGRect(
             x: qtyLabel.right+10,

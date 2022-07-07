@@ -61,10 +61,12 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
 //        textField.placeholder = "0.00"// "₱ 0.00"
         textField.autocorrectionType = .no
         textField.keyboardType = .decimalPad
-        textField.setLeftView(image: UIImage(systemName: "pesosign.square.fill")!)
+//        textField.setLeftView(image: UIImage(systemName: "pesosign.square.fill")!)
         
         textField.backgroundColor = Constants.whiteBackgroundColor
         textField.textColor = Constants.blackLabelColor
+        
+        textField.layer.borderColor = Constants.darkGrayCGColor
         
         textField.attributedPlaceholder = NSAttributedString(
             string: "0.00",
@@ -83,7 +85,7 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
         
         tableView.isHidden = false
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Constants.whiteBackgroundColor
+        tableView.backgroundColor = Constants.vcBackgroundColor
         return tableView
     }()
     
@@ -92,6 +94,7 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
         let container = UIView(frame: .zero)
         container.layer.masksToBounds = true
         container.clipsToBounds = true
+        container.backgroundColor = Constants.vcBackgroundColor
         return container
     }()
     
@@ -303,7 +306,7 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
 //        title = "Cash Amount"
-        view.backgroundColor = Constants.whiteBackgroundColor
+        view.backgroundColor = Constants.vcBackgroundColor
         
         getAllItems()
         getCouponsEntity()
@@ -476,7 +479,7 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
             self.seniorPwdDiscountValueLabel.text = String(format:"₱%.2f", self.appliedDiscountAmount)
             self.surchargeValueLabel.text = String(format:"₱%.2f", totalSurcharge)
             self.totalValueLabel.text = String(format:"₱%.2f", self.grandTotal)
-            self.cashTenderedTextField.placeholder = String(format:"%.2f", self.grandTotal)
+            self.cashTenderedTextField.placeholder = "₱\(String(format:"%.2f", self.grandTotal))"
         }
         
     }
@@ -1107,14 +1110,14 @@ extension CashMethodViewController: UITableViewDelegate, UITableViewDataSource {
         return 70.0
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableCell(withIdentifier: CashPaymentHeaderTableViewCell.identifier) as! CashPaymentHeaderTableViewCell
-        return header
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let header = tableView.dequeueReusableCell(withIdentifier: CashPaymentHeaderTableViewCell.identifier) as! CashPaymentHeaderTableViewCell
+//        return header
+//    }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20.0
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 20.0
+//    }
 }
 
 extension CashMethodViewController {
@@ -1246,7 +1249,7 @@ extension CashMethodViewController {
         
         tableView.frame = CGRect(
             x: 0,
-            y: cashTenderedTextField.bottom+10,
+            y: cashTenderedTextField.bottom,
             width: view.width,
             height: view.height-cashTenderedTextField.height-bottomContainerHeight)
         

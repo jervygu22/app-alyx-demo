@@ -29,8 +29,8 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
         tableView.register(CashDrawerTableViewCell.self, forCellReuseIdentifier: CashDrawerTableViewCell.idenditifier)
         
         tableView.isHidden = false
-        tableView.separatorStyle = .singleLine
-        tableView.backgroundColor = Constants.whiteBackgroundColor
+        tableView.separatorStyle = .none //.singleLine
+        tableView.backgroundColor = Constants.vcBackgroundColor // Constants.whiteBackgroundColor
         
         return tableView
     }()
@@ -39,7 +39,7 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
         let container = UIView(frame: .zero)
         container.layer.masksToBounds = true
         container.clipsToBounds = true
-        container.backgroundColor = Constants.whiteBackgroundColor
+        container.backgroundColor = Constants.vcBackgroundColor // Constants.whiteBackgroundColor
         container.addTopBorder(with: Constants.lightGrayBorderColor, andWidth: 0.5)
         return container
     }()
@@ -63,7 +63,7 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
         label.numberOfLines = 0
         label.textColor = Constants.blackLabelColor
         label.font = .systemFont(ofSize: 18, weight: .regular)
-        label.text = "Grand Total: "
+        label.text = "Total: "
         label.textAlignment = .left
         return label
     }()
@@ -102,7 +102,7 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
         
         fetchUsers()
         
-        view.backgroundColor = Constants.whiteBackgroundColor
+        view.backgroundColor = Constants.vcBackgroundColor
 
         view.addSubview(tableView)
         view.addSubview(bottomContainer)
