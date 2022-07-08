@@ -53,7 +53,29 @@ class ProgressViewController: UIViewController {
         UserDefaults.standard.setValue(Constants.demo_franchise_name, forKey: Constants.domain_name)
         UserDefaults.standard.setValue(Constants.demo_device_id, forKey: Constants.generated_device_id)
         
-        saveAccessTokens()
+//        UserDefaults.standard.setValue(nil, forKey: Constants.user_id)
+//        UserDefaults.standard.setValue(nil, forKey: Constants.user_name)
+//        UserDefaults.standard.setValue(nil, forKey: Constants.user_email)
+//        UserDefaults.standard.setValue(nil, forKey: Constants.user_pin)
+//        UserDefaults.standard.setValue(nil, forKey: Constants.is_user_handle_cash)
+//        UserDefaults.standard.setValue(nil, forKey: Constants.user_role)
+//        UserDefaults.standard.setValue(nil, forKey: Constants.user_emp_id)
+        
+        if let cachedAccessToken = UserDefaults.standard.string(forKey: Constants.user_id),
+           let cachedAccessToken2 = UserDefaults.standard.string(forKey: Constants.user_id),
+           let supervisorID = UserDefaults.standard.string(forKey: Constants.user_id) {
+            if !cachedAccessToken.isEmpty && !cachedAccessToken2.isEmpty && !supervisorID.isEmpty {
+                DispatchQueue.main.async {
+                    // then remove the spinner view controller
+                    self.child.willMove(toParent: nil)
+                    self.child.view.removeFromSuperview()
+                    self.child.removeFromParent()
+                    self.goToMenu()
+                }
+            }
+        } else {
+            saveAccessTokens()
+        }
         
     }
 
@@ -214,6 +236,7 @@ class ProgressViewController: UIViewController {
                 break
             case .failure(let error):
                 print("fetchIsDemo error: \(error.localizedDescription)")
+                UserDefaults.standard.setValue(true, forKey: Constants.is_demo_build)
                 break
             }
         }

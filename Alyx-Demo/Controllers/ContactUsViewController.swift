@@ -224,13 +224,55 @@ class ContactUsViewController: UIViewController, UITextFieldDelegate {
         companyTextField.delegate = self
         locationTextField.delegate = self
         
-        submitButton.addTarget(self, action: #selector(didTapSubmit), for: .touchUpInside)
+        submitButton.addTarget(self, action: #selector(didTapSubmitForm), for: .touchUpInside)
         
         setupFieldsData()
     }
     
-    @objc func didTapSubmit() {
-        print("didTapSubmit")
+    @objc func didTapSubmitForm() {
+        
+        guard let demoUserName = nameTextField.text, !demoUserName.isEmpty,
+              let demoUserContact = contactTextField.text, !demoUserContact.isEmpty,
+              let demoUserEmail = emailTextField.text, !demoUserEmail.isEmpty,
+              let demoUserCompany = companyTextField.text,
+              let demoUserLocation = locationTextField.text else {
+            print("Required inputs!")
+            showAlertWith(title: "", message: "Please fill all the required fields", shouldClear: false, style: .alert)
+            return
+        }
+        
+        let alert = UIAlertController(title: "Submit Form", message: "You are about to submit your details to Alyx Team", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Proceed", style: .default, handler: { [weak self] action in
+            
+            APICaller.shared.postForm(with: demoUserName, with: demoUserContact, with: demoUserEmail, with: demoUserCompany, with: demoUserLocation) { result in
+                switch result {
+                case .success(let model):
+                    print("didTapSubmitForm: \(model.data.message)")
+                    self?.showAlertWith(title: nil, message: "\(model.message)", shouldClear: true, style: .alert)
+                    break
+                case .failure(let error):
+                    print("didTapSubmitForm: \(error.localizedDescription)")
+                    self?.showAlertWith(title: "Error submitting form", message: "Please check internet connection and try again", shouldClear: false, style: .alert)
+                    break
+                }
+            }
+        }))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    private func showAlertWith(title: String?, message: String?, shouldClear: Bool?, style: UIAlertController.Style = .alert) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] action in
+            self?.shouldClearFields(shouldClear: shouldClear ?? false)
+        }))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     private func setupFieldsData() {
@@ -240,6 +282,17 @@ class ContactUsViewController: UIViewController, UITextFieldDelegate {
         contactUsField.append("Email")
         contactUsField.append("Business/Company (Optional)")
         contactUsField.append("Location/Address (Optional)")
+    }
+    
+    private func shouldClearFields(shouldClear: Bool) {
+        
+        if shouldClear {
+            nameTextField.text = nil
+            contactTextField.text = nil
+            emailTextField.text = nil
+            companyTextField.text = nil
+            locationTextField.text = nil
+        }
     }
     
     

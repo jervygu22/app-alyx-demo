@@ -40,11 +40,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            window.rootViewController = navVC
 //        }
         
-        if AuthManager.shared.isLoggedIn {
-            window.rootViewController = UINavigationController(rootViewController: MenuViewController())
-        } else {
-            window.rootViewController = UINavigationController(rootViewController: ProgressViewController())
-        }
+//        if AuthManager.shared.isLoggedIn {
+//            window.rootViewController = UINavigationController(rootViewController: MenuViewController())
+//        } else {
+//            window.rootViewController = UINavigationController(rootViewController: ProgressViewController())
+//        }
+        window.rootViewController = UINavigationController(rootViewController: ProgressViewController())
         
         window.makeKeyAndVisible()
         self.window = window

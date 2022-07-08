@@ -239,6 +239,38 @@ final class APICaller {
         }
     }
     
+    public func postForm(with name: String, with contact: String, with email: String, with company: String?, with location: String?, completion: @escaping(Result<SubmitFormResponse, Error>) -> Void) {
+        // https://alyx.codedisruptors.com/demofranchise/wp-json/jwt-auth/v1/jeeves/submit?name=demoUser&contact_no=0912345678&email=demoTestEmail@gmail.com&company=PostMan&location=Manila
+        
+        guard let cachedDomainName = UserDefaults.standard.string(forKey: "domain_name") else {
+            print("postDevice No cachedDomainName")
+            return
+        }
+        
+//        let urlString = "\(Constants.https)\(cachedDomainName)\(Constants.httpsAuthV1)/device?title=\(deviceModelName)&device_id=\(deviceID)"
+        let urlString = "\(Constants.https)\(cachedDomainName)\(Constants.httpsAuthV1)/submit?name=\(name)&contact_no=\(contact)&email=\(email)&company=\(company ?? "")&location=\(location ?? "")"
+        
+        print("postForm urlString: \(urlString)")
+
+        createRequestWithToken2(with: URL(string: urlString), with: .POST) { baseRequest in
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                do {
+//                    let result = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    let result = try JSONDecoder().decode(SubmitFormResponse.self, from: data)
+                    completion(.success(result))
+                } catch {
+                    print("APICaller postForm: \(error)")
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+        }
+    }
+    
     public func getDevices(completion: @escaping(Result<GetDevicesResponse, Error>) -> Void) {
         
         guard let cachedDomainName = UserDefaults.standard.string(forKey: "domain_name") else {

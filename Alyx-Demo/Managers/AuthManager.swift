@@ -56,11 +56,22 @@ final class AuthManager {
        return nil
     }()
     
+    public var hasCachedToken: Bool {
+        return accessToken != nil
+    }
+    
+    public var hasCachedToken2: Bool {
+        return accessToken2 != nil
+    }
+    
     public var accessToken: String? = {
-//        return UserDefaults.standard.string(forKey: "access_token")
-        
-        let storedToken = CartViewController.shared.returnStoredToken()
-        return storedToken
+        return UserDefaults.standard.string(forKey: Constants.access_token)
+//        let storedToken = CartViewController.shared.returnStoredToken()
+//        return storedToken
+    }()
+    
+    public var accessToken2: String? = {
+        return UserDefaults.standard.string(forKey: Constants.access_token2)
     }()
     
     public var isDemoBuild: Bool? = {

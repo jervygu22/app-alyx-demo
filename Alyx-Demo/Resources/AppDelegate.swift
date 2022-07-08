@@ -60,23 +60,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            window.rootViewController = navVC
 //        }
         
-        if AuthManager.shared.isLoggedIn {
-            window.rootViewController = UINavigationController(rootViewController: MenuViewController())
-            UINavigationBar.appearance().barTintColor = .black  // solid color
-            UINavigationBar.appearance().barStyle = .black // Battery,etc bar always white
-            UINavigationBar.appearance().isTranslucent = false // not see through
-            UIBarButtonItem.appearance().tintColor = .white
-            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-            UITabBar.appearance().barTintColor = .yellow // tabBar
-        } else {
-            window.rootViewController = UINavigationController(rootViewController: ProgressViewController())
-            UINavigationBar.appearance().barTintColor = .black  // solid color
-            UINavigationBar.appearance().barStyle = .black // Battery,etc bar always white
-            UINavigationBar.appearance().isTranslucent = false // not see through
-            UIBarButtonItem.appearance().tintColor = .white
-            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-            UITabBar.appearance().barTintColor = .yellow // tabBar
-        }
+//        if AuthManager.shared.isLoggedIn {
+//            window.rootViewController = UINavigationController(rootViewController: MenuViewController())
+//            UINavigationBar.appearance().barTintColor = .black  // solid color
+//            UINavigationBar.appearance().barStyle = .black // Battery,etc bar always white
+//            UINavigationBar.appearance().isTranslucent = false // not see through
+//            UIBarButtonItem.appearance().tintColor = .white
+//            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+//            UITabBar.appearance().barTintColor = .yellow // tabBar
+//        } else {
+//            window.rootViewController = UINavigationController(rootViewController: ProgressViewController())
+//            UINavigationBar.appearance().barTintColor = .black  // solid color
+//            UINavigationBar.appearance().barStyle = .black // Battery,etc bar always white
+//            UINavigationBar.appearance().isTranslucent = false // not see through
+//            UIBarButtonItem.appearance().tintColor = .white
+//            UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+//            UITabBar.appearance().barTintColor = .yellow // tabBar
+//        }
+        
+        window.rootViewController = UINavigationController(rootViewController: ProgressViewController())
+        UINavigationBar.appearance().barTintColor = .black  // solid color
+        UINavigationBar.appearance().barStyle = .black // Battery,etc bar always white
+        UINavigationBar.appearance().isTranslucent = false // not see through
+        UIBarButtonItem.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        UITabBar.appearance().barTintColor = .yellow // tabBar
         
         window.makeKeyAndVisible()
         self.window = window
