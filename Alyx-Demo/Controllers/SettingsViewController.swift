@@ -90,7 +90,7 @@ class SettingsViewController: UIViewController {
     private func configureTableData() {
         settingsTableData.append(SettingsTableData(id: 1, title: "Submit Cash Drawer"))
 //        settingsTableData.append(SettingsTableData(id: 2, title: "Terms and Agreement"))
-//        settingsTableData.append(SettingsTableData(id: 2, title: "Logout"))
+        settingsTableData.append(SettingsTableData(id: 2, title: "Logout"))
     }
     
     override func viewDidLayoutSubviews() {
@@ -142,7 +142,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if model.id == 2 {
             cell.accessoryType = .none
         } else {
-            cell.accessoryType = .disclosureIndicator
+//            cell.accessoryType = .disclosureIndicator
+            
+            // accesorView
+            let chevronImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
+            chevronImageView.tintColor = Constants.darkGrayColor
+            cell.accessoryView = chevronImageView
         }
         
         cell.backgroundColor = Constants.tableViewCellColor

@@ -22,6 +22,10 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
     
     private var users = [User]()
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var cart = [Cart_Entity]()
+    private var cartBarButton = CartBadgeBarButtonItem()
+    
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -101,6 +105,9 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
         title = "Cash Drawer"
         
         fetchUsers()
+        
+        getAllItems()
+        configureCartButton()
         
         view.backgroundColor = Constants.vcBackgroundColor
 
@@ -429,6 +436,57 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
 //        submitCashCountButton.backgroundColor = .blue
         
         layoutDemoLabel()
+    }
+    
+    @objc func didTapCart() {
+        print("Did tap cart")
+        let vc = CartViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    private func configureCartButton() {
+        let customButton = UIButton(type: UIButton.ButtonType.custom)
+        customButton.frame = CGRect(x: 0, y: 0, width: 35.0, height: 35.0)
+        customButton.addTarget(self, action: #selector(didTapCart), for: .touchUpInside)
+        customButton.setImage(UIImage(named: "Cart"), for: .normal)
+//        customButton.setImage(UIImage(systemName: "cart"), for: .normal)
+        
+        cartBarButton = CartBadgeBarButtonItem()
+        cartBarButton.setup(customButton: customButton)
+        
+//         self.btnBarBadge.shouldHideBadgeAtZero = true
+//         self.btnBarBadge.shouldAnimateBadge = false
+        
+        var cartBadgeCount = 0
+        for item in cart {
+            cartBadgeCount += Int(item.cart_quantity)
+        }
+        
+        
+//        self.cartBarButton.badgeValue = "0"
+        cartBarButton.badgeValue = "\(cartBadgeCount)"
+        cartBarButton.badgeOriginX = 20.0
+        cartBarButton.badgeOriginY = -4
+        
+        navigationItem.rightBarButtonItem = self.cartBarButton
+    }
+    
+    public func getAllItems() {
+        do {
+            // let items = try context.fetch(ToDoListItem.fetchRequest())
+            let cartEntity = try context.fetch(Cart_Entity.fetchRequest())
+            cart = cartEntity.filter({ $0.cart_status == "added" })
+            
+            var cartBadgeCount = 0
+            for item in cart {
+                cartBadgeCount += Int(item.cart_quantity)
+            }
+            
+            cartBarButton.badgeValue = "\(cartBadgeCount)"
+        } catch {
+            // error
+        }
     }
 }
 
