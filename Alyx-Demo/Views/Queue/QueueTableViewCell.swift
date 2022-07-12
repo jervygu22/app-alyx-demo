@@ -86,7 +86,11 @@ class QueueTableViewCell: UITableViewCell {
         
         contentView.clipsToBounds = true
         backgroundColor = Constants.whiteBackgroundColor
-        accessoryType = .disclosureIndicator
+        
+//        accessoryType = .disclosureIndicator
+        let chevronImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
+        chevronImageView.tintColor = Constants.darkGrayColor
+        accessoryView = chevronImageView
         
         printImageView.isHidden = true
     }

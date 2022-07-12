@@ -239,7 +239,9 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
             print("shift nil")
             
             let alert = UIAlertController(title: "Can't proceed", message: "Please check if you already time in.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (action) in
+                self.navigationController?.popToRootViewController(animated: true)
+            }))
             
             DispatchQueue.main.async {
                 self.present(alert, animated: true, completion: nil)
@@ -323,15 +325,19 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
     
     public func showAlertWith(title: String, message: String, style: UIAlertController.Style = .alert, shouldReload: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (action) in
-            self.dismiss(animated: true) {
-                if shouldReload {
-                    print("shouldReload")
-                    
-//                    self.configureCashDrawerData()
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-            }
+            
+            self.navigationController?.popToRootViewController(animated: true)
+            
+//            self.dismiss(animated: true) {
+//                if shouldReload {
+//                    print("shouldReload")
+//
+////                    self.configureCashDrawerData()
+//                    self.navigationController?.popToRootViewController(animated: true)
+//                }
+//            }
         }))
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
