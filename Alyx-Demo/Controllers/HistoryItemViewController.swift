@@ -417,8 +417,8 @@ class HistoryItemViewController: UIViewController, VoidPasscodeViewControllerDel
         
         let alert = UIAlertController(title: nil, message: "Are you sure you want to cancel this order?", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Proceed", style: .destructive, handler: { [weak self] action in
+        alert.addAction(UIAlertAction(title: "NO", style: .cancel, handler: nil)) // Cancel & Proceed
+        alert.addAction(UIAlertAction(title: "YES", style: .destructive, handler: { [weak self] action in
             self?.createVoidPasscodeView(with: self?.orderID ?? 0)
         }))
         present(alert, animated: true, completion: nil)

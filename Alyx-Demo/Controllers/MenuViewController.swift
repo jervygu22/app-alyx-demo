@@ -1053,6 +1053,10 @@ class MenuViewController: UIViewController, DrawerControllerDelegate, UISearchRe
                 }
                 
                 productEntity.category = catEntity
+                
+                // save date as initial date since last update
+                let currentDate = Date().sinceDateFormat()
+                UserDefaults.standard.setValue(currentDate, forKey: Constants.date_since_last_update)
             })
             
             do {

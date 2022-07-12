@@ -915,6 +915,7 @@ final class APICaller {
                     
                     if !result.data.isEmpty {
                         // saving date since fetched updated product
+                        print("result.data.count: \(result.data.count)")
                         let currentDate = Date().sinceDateFormat()
                         UserDefaults.standard.setValue(currentDate, forKey: Constants.date_since_last_update)
                     }
