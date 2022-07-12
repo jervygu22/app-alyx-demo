@@ -89,7 +89,7 @@ class QueueTableViewCell: UITableViewCell {
         
 //        accessoryType = .disclosureIndicator
         let chevronImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
-        chevronImageView.tintColor = Constants.darkGrayColor
+        chevronImageView.tintColor = Constants.lightGrayColor
         accessoryView = chevronImageView
         
         printImageView.isHidden = true

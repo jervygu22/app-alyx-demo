@@ -38,8 +38,8 @@ class VoidPasscodeViewController: UIViewController, UITextFieldDelegate {
         label.numberOfLines = 0
         label.textColor = Constants.blackLabelColor
         label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.text = "Enter your passcode"
-        label.textAlignment = .left
+        label.text = "Enter your passcode\nfor DEMO purposes only:\n4412"
+        label.textAlignment = .center //.left
         return label
     }()
     
@@ -112,6 +112,7 @@ class VoidPasscodeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+//        view.backgroundColor = .red
         
         fetchUsers()
         
@@ -341,8 +342,9 @@ class VoidPasscodeViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        let headerLabelHeight: CGFloat = 60
         let passcodeContainerWidth: CGFloat = 368.0
-        let passcodeContainerHeight: CGFloat = 130.0
+        let passcodeContainerHeight: CGFloat = 146.0
         
         let codeFieldSize = passcodeContainerWidth/5
         let pcGapSize = (((passcodeContainerWidth/5)-20)/3)
@@ -357,7 +359,7 @@ class VoidPasscodeViewController: UIViewController, UITextFieldDelegate {
             x: 10,
             y: 0,
             width: passcodeContainer.width-20,
-            height: 44)
+            height: headerLabelHeight)
         
         passcodeField1.frame = CGRect(
             x: 10,

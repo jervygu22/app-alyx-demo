@@ -90,7 +90,7 @@ class SettingsViewController: UIViewController {
     private func configureTableData() {
         settingsTableData.append(SettingsTableData(id: 1, title: "Submit Cash Drawer"))
 //        settingsTableData.append(SettingsTableData(id: 2, title: "Terms and Agreement"))
-        settingsTableData.append(SettingsTableData(id: 2, title: "Logout"))
+//        settingsTableData.append(SettingsTableData(id: 3, title: "Logout"))
     }
     
     override func viewDidLayoutSubviews() {
@@ -139,14 +139,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let model = settingsTableData[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        if model.id == 2 {
+        if model.id == 3 {
             cell.accessoryType = .none
         } else {
 //            cell.accessoryType = .disclosureIndicator
             
             // accesorView
             let chevronImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
-            chevronImageView.tintColor = Constants.darkGrayColor
+            chevronImageView.tintColor = Constants.lightGrayColor
             cell.accessoryView = chevronImageView
         }
         
@@ -161,15 +161,21 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = settingsTableData[indexPath.row]
         
-        print(settingsTableData[indexPath.row].title)
-        
-        if model.id == 1 {
-            print("Settings tapped")
+        switch model.id {
+        case 1:
+            print(model.title)
             let vc = CashDrawerViewController()
             navigationController?.pushViewController(vc, animated: true)
-        } else if model.id == 2 {
-            print("Logging out")
+            break
+        case 2:
+            print(model.title)
+            break
+        case 3:
+            print(model.title)
             logOutTapped()
+            break
+        default:
+            break
         }
         
     }
