@@ -42,7 +42,17 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
         label.textColor = Constants.blackLabelColor
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.text = "Enter your passcode"
-        label.textAlignment = .left
+        label.textAlignment = .center //.left
+        return label
+    }()
+    
+    private let headerLabelForDemo: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = Constants.systemRedColor
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.text = "for DEMO purpose only, choose one(1):\n4412, 4413"
+        label.textAlignment = .center //.left
         return label
     }()
     
@@ -119,6 +129,7 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
         
         view.addSubview(passcodeContainer)
         passcodeContainer.addSubview(headerLabel)
+        passcodeContainer.addSubview(headerLabelForDemo)
         passcodeContainer.addSubview(passcodeField1)
         passcodeContainer.addSubview(passcodeField2)
         passcodeContainer.addSubview(passcodeField3)
@@ -442,8 +453,12 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        let headerLabelHeight: CGFloat = 20
+        let headerLabelForDemoHeight: CGFloat = 40
+        let headerHeight = headerLabelHeight + headerLabelForDemoHeight
+        
         let passcodeContainerWidth: CGFloat = 368.0
-        let passcodeContainerHeight: CGFloat = 130.0
+        let passcodeContainerHeight: CGFloat = 146.0
         
         let codeFieldSize = passcodeContainerWidth/5
         let pcGapSize = (((passcodeContainerWidth/5)-20)/3)
@@ -458,28 +473,75 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
             x: 10,
             y: 0,
             width: passcodeContainer.width-20,
-            height: 44)
+            height: headerLabelHeight)
+//        headerLabel.backgroundColor = .systemPink
+        
+        headerLabelForDemo.frame = CGRect(
+            x: 10,
+            y: headerLabel.bottom,
+            width: passcodeContainer.width-20,
+            height: headerLabelForDemoHeight)
+//        headerLabelForDemo.backgroundColor = .systemGreen
         
         passcodeField1.frame = CGRect(
             x: 10,
-            y: headerLabel.bottom,
+            y: headerLabelForDemo.bottom,
             width: codeFieldSize,
-            height: passcodeContainer.height-10-headerLabel.height)
+            height: passcodeContainer.height-10-headerHeight)
         passcodeField2.frame = CGRect(
             x: passcodeField1.right+pcGapSize,
-            y: headerLabel.bottom,
+            y: headerLabelForDemo.bottom,
             width: codeFieldSize,
-            height: passcodeContainer.height-10-headerLabel.height)
+            height: passcodeContainer.height-10-headerHeight)
         passcodeField3.frame = CGRect(
             x: passcodeField2.right+pcGapSize,
-            y: headerLabel.bottom,
+            y: headerLabelForDemo.bottom,
             width: codeFieldSize,
-            height: passcodeContainer.height-10-headerLabel.height)
+            height: passcodeContainer.height-10-headerHeight)
         passcodeField4.frame = CGRect(
             x: passcodeField3.right+pcGapSize,
-            y: headerLabel.bottom,
+            y: headerLabelForDemo.bottom,
             width: codeFieldSize,
-            height: passcodeContainer.height-10-headerLabel.height)
+            height: passcodeContainer.height-10-headerHeight)
+        
+//        let passcodeContainerWidth: CGFloat = 368.0
+//        let passcodeContainerHeight: CGFloat = 130.0
+//
+//        let codeFieldSize = passcodeContainerWidth/5
+//        let pcGapSize = (((passcodeContainerWidth/5)-20)/3)
+//
+//        passcodeContainer.frame = CGRect(
+//            x: (view.width-passcodeContainerWidth)/2,
+//            y: (view.height-passcodeContainerHeight)/2,
+//            width: passcodeContainerWidth,
+//            height: passcodeContainerHeight)
+//
+//        headerLabel.frame = CGRect(
+//            x: 10,
+//            y: 0,
+//            width: passcodeContainer.width-20,
+//            height: 44)
+//
+//        passcodeField1.frame = CGRect(
+//            x: 10,
+//            y: headerLabel.bottom,
+//            width: codeFieldSize,
+//            height: passcodeContainer.height-10-headerLabel.height)
+//        passcodeField2.frame = CGRect(
+//            x: passcodeField1.right+pcGapSize,
+//            y: headerLabel.bottom,
+//            width: codeFieldSize,
+//            height: passcodeContainer.height-10-headerLabel.height)
+//        passcodeField3.frame = CGRect(
+//            x: passcodeField2.right+pcGapSize,
+//            y: headerLabel.bottom,
+//            width: codeFieldSize,
+//            height: passcodeContainer.height-10-headerLabel.height)
+//        passcodeField4.frame = CGRect(
+//            x: passcodeField3.right+pcGapSize,
+//            y: headerLabel.bottom,
+//            width: codeFieldSize,
+//            height: passcodeContainer.height-10-headerLabel.height)
     }
     
     @objc func didEndEnteringPincode() -> Bool {

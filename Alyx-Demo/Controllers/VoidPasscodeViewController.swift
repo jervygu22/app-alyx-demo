@@ -49,9 +49,9 @@ class VoidPasscodeViewController: UIViewController, UITextFieldDelegate {
         label.textColor = Constants.systemRedColor
         label.font = .systemFont(ofSize: 14, weight: .medium)
         if let userPin = UserDefaults.standard.string(forKey: Constants.user_pin) {
-            label.text = "for DEMO purposes only:\n\(userPin)"
+            label.text = "for DEMO purpose only:\n\(userPin)"
         } else {
-            label.text = "for DEMO purposes only:\n4412"
+            label.text = "for DEMO purpose only:\n4412"
         }
         label.textAlignment = .center //.left
         return label
