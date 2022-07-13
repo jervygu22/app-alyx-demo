@@ -98,7 +98,7 @@ class EnterPasscodeViewController: UIViewController, UITextFieldDelegate {
         label.numberOfLines = 0
         label.textColor = Constants.systemRedColor
         label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.text = "for DEMO purpose only, choose one(1):\n4412, 4413"
+        label.text = "for DEMO purpose only, choose one(1):\n4412, 4413, 3333"
         label.textAlignment = .center //.left
         return label
     }()

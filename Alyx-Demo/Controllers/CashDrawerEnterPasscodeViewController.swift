@@ -51,7 +51,7 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
         label.numberOfLines = 0
         label.textColor = Constants.systemRedColor
         label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.text = "for DEMO purpose only, choose one(1):\n4412, 4413"
+        label.text = "for DEMO purpose only:\n4412"
         label.textAlignment = .center //.left
         return label
     }()
@@ -285,14 +285,14 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
         }
     }
     
-    
     public func checkValidPinCode(with pin: String) {
         
         guard let users = users,
               let createdCashCount = createdCashCount,
-              let superUserID = UserDefaults.standard.string(forKey: "user_id"),
-              let deviceID = UserDefaults.standard.string(forKey: "generated_device_id"),
-              let shift = UserDefaults.standard.string(forKey: "pin_entered_employee_shift") else {
+              let superUserID = UserDefaults.standard.string(forKey: Constants.user_id),
+              let deviceID = UserDefaults.standard.string(forKey: Constants.generated_device_id),
+              let cashierID = UserDefaults.standard.string(forKey: Constants.pin_entered_user_id),
+              let shift = UserDefaults.standard.string(forKey: Constants.pin_entered_employee_shift) else {
             print("Data incomplete!")
             return
         }
@@ -301,7 +301,7 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
         print("users:", users)
         
         
-        if users.contains(where: { $0.user_pin == pin && $0.user_handles_cash == true }) {
+        if users.contains(where: { $0.user_pin == pin && $0.user_id == superUserID }) {
             // login successful
             print("Pin verified!: ", pin)
             // post
@@ -309,7 +309,7 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
             // get user data
             guard let userPassingCode = users.filter( { $0.user_pin == pin }).first,
                   let intSuperUserID = Int(superUserID),
-                  let intUserID = Int(userPassingCode.user_id) else {
+                  let intUserID = Int(cashierID) else {
                 return
             }
             
@@ -413,6 +413,135 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
         }
         
     }
+    
+    
+//    public func checkValidPinCode(with pin: String) {
+//
+//        guard let users = users,
+//              let createdCashCount = createdCashCount,
+//              let superUserID = UserDefaults.standard.string(forKey: "user_id"),
+//              let deviceID = UserDefaults.standard.string(forKey: "generated_device_id"),
+//              let shift = UserDefaults.standard.string(forKey: "pin_entered_employee_shift") else {
+//            print("Data incomplete!")
+//            return
+//        }
+//
+//        print("createdCashCount:", createdCashCount)
+//        print("users:", users)
+//
+//
+//        if users.contains(where: { $0.user_pin == pin && $0.user_handles_cash == true }) {
+//            // login successful
+//            print("Pin verified!: ", pin)
+//            // post
+//
+//            // get user data
+//            guard let userPassingCode = users.filter( { $0.user_pin == pin }).first,
+//                  let intSuperUserID = Int(superUserID),
+//                  let intUserID = Int(userPassingCode.user_id) else {
+//                return
+//            }
+//
+//            let isInitialSent = UserDefaults.standard.bool(forKey: Constants.is_initial_sent)
+//
+//            var grandTotal: Double = 0
+//
+//
+//            for bill in createdCashCount {
+//                if let billAmount = Double(bill.key) {
+//                    grandTotal += Double(bill.value) * billAmount
+//                }
+//            }
+//
+//            let cashCountToPost = CashCountPostModel(
+//                userid: intUserID,
+//                superuserid: intSuperUserID,
+//                deviceid: deviceID,
+//                initial: isInitialSent ? 0 : 1,
+//                cashcount: createdCashCount,
+//                total: grandTotal,
+//                workdate: Date().workDate(),
+//                shift: shift)
+//
+////            cashCountBody.userid = Int(from: userPassingCode.user_id ?? 0)
+//
+//            print("userID: ", userPassingCode.user_emp_id)
+//            print("cashCountToPost: ", cashCountToPost)
+//            print("createdCashCount: ", createdCashCount)
+//            print("superUserID: ", intSuperUserID)
+//            print("userID: ", intUserID)
+//            print("deviceID: ", deviceID)
+//            print("shift: ", shift)
+//            print("workdate: ", Date().workDate())
+//
+//
+//            APICaller.shared.postCashCount(with: cashCountToPost) { [weak self] success in
+//                switch success {
+//                case true:
+//                    print("success")
+//
+//                    // set if initial cash is sent
+//                    UserDefaults.standard.setValue(!isInitialSent, forKey: Constants.is_initial_sent)
+//
+//                    DispatchQueue.main.async {
+////                        self?.headerLabel.text = "Success submitting cash count by \(userPassingCode.user_name.capitalized)!"
+//                        self?.dismiss(animated: false, completion: nil)
+//                        self?.cashDrawerEnterPasscodeViewControllerDelegate?.shouldPopToRootVC()
+//                    }
+//
+////                    DispatchQueue.main.asyncAfter(deadline: .now()+1.5) {
+////                        self?.dismiss(animated: true, completion: nil)
+////                        self?.cashDrawerEnterPasscodeViewControllerDelegate?.shouldPopToRootVC()
+////                    }
+//
+//                case false:
+//                    print("failed to post cashcount")
+//
+//                    let alert = UIAlertController(title: "Request failed!", message: "No internet connection. Please check your connection and try again.", preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: {_ in
+//                        self?.passcodeField1.text = nil
+//                        self?.passcodeField2.text = nil
+//                        self?.passcodeField3.text = nil
+//                        self?.passcodeField4.text = nil
+//                        self?.passcodeField1.becomeFirstResponder()
+//                    }))
+//                    DispatchQueue.main.async {
+//                        self?.present(alert, animated: true, completion: nil)
+//                    }
+//
+//                }
+//            }
+//
+//
+//            do {
+//                let model = cashCountToPost
+//                let modelJson = try JSONEncoder().encode(model)
+//                let modelJsontoString = String(data: modelJson, encoding: .utf8)!
+//                print("updateCouponsJsontoString: \(modelJsontoString)")
+//            } catch {
+//                print("error coding cashCountToPost: \(error.localizedDescription)")
+//            }
+//
+//        } else {
+//            print("Invalid pin!: ", pin)
+//
+//            let alert = UIAlertController(title: "Access denied!", message: "Enter a valid pin.", preferredStyle: .alert)
+////            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: { [weak self] _ in
+////                self?.passcodeField1.becomeFirstResponder()
+////            }))
+//            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: {_ in
+//                self.passcodeField1.text = nil
+//                self.passcodeField2.text = nil
+//                self.passcodeField3.text = nil
+//                self.passcodeField4.text = nil
+//                self.passcodeField1.becomeFirstResponder()
+//            }))
+//            DispatchQueue.main.async {
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        }
+//
+//    }
     
     
     public func showAlertWith(title: String, message: String, style: UIAlertController.Style = .alert, shouldReload: Bool) {

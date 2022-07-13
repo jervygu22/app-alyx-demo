@@ -10,8 +10,8 @@ import UIKit
 struct Constants {
     // UserDefaults Identifier
     
-    static let version = "v1.0.6 T-DEMO"
-    static let buildNumber = "1.0.6"
+    static let version = "v1.0.7 T-DEMO"
+    static let buildNumber = "1.0.7"
     
     static let app_logo = "alyx_logo"
     

@@ -234,15 +234,18 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
         print("createdCashCount:",createdCashCount.count)
         
 
-        guard let superUserID = UserDefaults.standard.string(forKey: "user_id") else {
+        guard let superUserID = UserDefaults.standard.string(forKey: Constants.user_id) else {
             print("superUserID nil")
             return
         }
-        guard let deviceID = UserDefaults.standard.string(forKey: "generated_device_id") else {
+        guard let deviceID = UserDefaults.standard.string(forKey: Constants.generated_device_id) else {
             print("deviceID nil")
             return
         }
-        guard let shift = UserDefaults.standard.string(forKey: "pin_entered_employee_shift") else {
+        
+        
+        guard let cashierID = UserDefaults.standard.string(forKey: Constants.pin_entered_user_id),
+              let shift = UserDefaults.standard.string(forKey: Constants.pin_entered_employee_shift) else {
             print("shift nil")
             
             let alert = UIAlertController(title: "Can't proceed", message: "Please check if you already time in.", preferredStyle: .alert)
@@ -335,7 +338,9 @@ class CashDrawerViewController: UIViewController, CashDrawerEnterPasscodeViewCon
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (action) in
             
-            self.navigationController?.popToRootViewController(animated: true)
+            if shouldReload {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
             
 //            self.dismiss(animated: true) {
 //                if shouldReload {
