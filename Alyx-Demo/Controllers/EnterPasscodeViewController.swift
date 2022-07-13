@@ -93,6 +93,8 @@ class EnterPasscodeViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
+    private var demoAccountPins = [String]()
+    
     private let headerLabelForDemo: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -193,6 +195,23 @@ class EnterPasscodeViewController: UIViewController, UITextFieldDelegate {
         
         let tapOut = UITapGestureRecognizer(target: self, action: #selector(didTapOutSide))
         self.view.addGestureRecognizer(tapOut)
+        
+        getDemoAccountsPin()
+    }
+    
+    private func getDemoAccountsPin() {
+        print("getDemoAccountsPin called")
+        demoAccountPins.removeAll()
+        
+        if let demoAccounts = users?.filter({ $0.user_handles_cash }).sorted(by: { $0.user_pin < $1.user_pin}) {
+            for demoUser in demoAccounts {
+                demoAccountPins.append(demoUser.user_pin)
+            }
+        }
+        
+        let demoAccountsStringRepresentation = demoAccountPins.joined(separator: ", ")
+        
+        headerLabelForDemo.text = "for DEMO purpose only, choose one(1):\n\(demoAccountsStringRepresentation)"
     }
     
     @objc func didTapOutSide() {

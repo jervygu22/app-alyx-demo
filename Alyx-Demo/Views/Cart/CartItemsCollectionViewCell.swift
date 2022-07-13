@@ -15,7 +15,7 @@ import CoreData
 //    func didCheckButton(_ button: UIButton, at index: Int, didChangeValueTo newValue: Bool)
 //}
 
-protocol CartItemsCollectionViewCellDelegate: class {
+protocol CartItemsCollectionViewCellDelegate: AnyObject {
     func shouldReloadCollectionView()
     func shouldReloadBottomView()
 }

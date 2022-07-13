@@ -83,9 +83,12 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
         
         tableView.register(CashPaymentHeaderTableViewCell.self, forCellReuseIdentifier: CashPaymentHeaderTableViewCell.identifier)
         
+        tableView.register(OrdersTableViewCell.self, forCellReuseIdentifier: OrdersTableViewCell.identifier)
+        
         tableView.isHidden = false
         tableView.separatorStyle = .none
         tableView.backgroundColor = Constants.vcBackgroundColor
+        
         return tableView
     }()
     
@@ -389,6 +392,8 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
         var allVat12Amount: Double = 0
         var rawGrandTotal: Double = 0
         
+        var allDiscount: Double = 0
+        
         print("cart: ", cart)
         for item in cart {
             
@@ -445,8 +450,8 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
             appliedDiscountAmount += roundedDiscountAmount
             cartSubTotal += roundedSubTotal
             
-//            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal
-            rawGrandTotal += (roundedVatableSalesForGrandtotal + roundedVat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal
+            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal
+//            rawGrandTotal += (roundedVatableSalesForGrandtotal + roundedVat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal
             
             print("\(item.cart_variation_name ?? "") roundedVatableSales: ", roundedVatableSales)
             print("\(item.cart_variation_name ?? "") roundedVatExemptSales: ", roundedVatExemptSales)
@@ -1079,31 +1084,60 @@ extension CashMethodViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let item = cart[indexPath.row]
-        
         if !cart.isEmpty {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CashPaymentTableViewCell.identifier, for: indexPath) as? CashPaymentTableViewCell else {
+            
+            let model = cart[indexPath.row]
+            
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: OrdersTableViewCell.identifier,
+                for: indexPath) as? OrdersTableViewCell else {
                 return UITableViewCell()
             }
             
-            cell.isAddon = item.cart_tagged_product != 0
-            cell.configure(with:
-                            OrderCellViewModel(
-                                id: Int(item.cart_product_id),
-                                name: item.cart_variation_name ?? item.cart_product_name ?? "-",
-                                quantity: Int(item.cart_quantity),
-                                subTotal: item.cart_discounted_product_cost, //item.cart_product_cost
-                                originalPrice: item.cart_original_cost,
-                                image: item.cart_product_image ?? "-",
-                                isChecked: false,
-                                discountKey: item.cart_discount_key ?? "-"))
+            cell.backgroundColor = Constants.vcBackgroundColor
+            
+            cell.isAddon = model.cart_tagged_product != 0
+            cell.configure(with: OrdersTableViewCellViewModel(
+                image: model.cart_product_image ?? "-",
+                name: model.cart_variation_name ?? "-",
+                quantity: Int(model.cart_quantity),
+                finalPrice: model.cart_discounted_product_cost * Double(model.cart_quantity),
+                originalPrice: model.cart_original_cost,
+                discount: model.cart_discount,
+                itemPrice: model.cart_product_cost))
             
             return cell
+            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = "Cart is empty"
             return cell
         }
+        
+//        let item = cart[indexPath.row]
+//        if !cart.isEmpty {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: CashPaymentTableViewCell.identifier, for: indexPath) as? CashPaymentTableViewCell else {
+//                return UITableViewCell()
+//            }
+//
+//            cell.isAddon = item.cart_tagged_product != 0
+//            cell.configure(with:
+//                            OrderCellViewModel(
+//                                id: Int(item.cart_product_id),
+//                                name: item.cart_variation_name ?? item.cart_product_name ?? "-",
+//                                quantity: Int(item.cart_quantity),
+//                                subTotal: item.cart_discounted_product_cost, //item.cart_product_cost
+//                                originalPrice: item.cart_original_cost,
+//                                image: item.cart_product_image ?? "-",
+//                                isChecked: false,
+//                                discountKey: item.cart_discount_key ?? "-"))
+//
+//            return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//            cell.textLabel?.text = "Cart is empty"
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

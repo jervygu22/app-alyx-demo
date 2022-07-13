@@ -51,7 +51,11 @@ class CashDrawerEnterPasscodeViewController: UIViewController, UITextFieldDelega
         label.numberOfLines = 0
         label.textColor = Constants.systemRedColor
         label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.text = "for DEMO purpose only:\n4412"
+        if let userPin = UserDefaults.standard.string(forKey: Constants.user_pin) {
+            label.text = "for DEMO purpose only:\n\(userPin)"
+        } else {
+            label.text = "for DEMO purpose only:\n4412"
+        }
         label.textAlignment = .center //.left
         return label
     }()

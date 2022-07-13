@@ -445,8 +445,8 @@ class QueueItemViewController: UIViewController {
             appliedDiscountAmount += roundedDiscountAmount
             cartSubTotal += roundedSubTotal
             
-//            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal
-            rawGrandTotal += (roundedVatableSalesForGrandtotal + roundedVat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal
+            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal
+//            rawGrandTotal += (roundedVatableSalesForGrandtotal + roundedVat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal
             
             print("\(item.cart_variation_name ?? "") roundedVatableSales: ", roundedVatableSales)
             print("\(item.cart_variation_name ?? "") roundedVatExemptSales: ", roundedVatExemptSales)
@@ -499,9 +499,9 @@ extension QueueItemViewController: UITableViewDelegate, UITableViewDataSource {
             image: model.cart_product_image ?? "-",
             name: model.cart_variation_name ?? "-",
             quantity: Int(model.cart_quantity),
-            finalPrice: model.cart_discounted_product_cost,
-            originalPrice: model.cart_product_cost,
-            discount: nil,
+            finalPrice: model.cart_discounted_product_cost * Double(model.cart_quantity),
+            originalPrice: model.cart_original_cost,
+            discount: model.cart_discount,
             itemPrice: model.cart_product_cost))
         
         return cell
