@@ -445,7 +445,7 @@ class QueueItemViewController: UIViewController {
             appliedDiscountAmount += roundedDiscountAmount
             cartSubTotal += roundedSubTotal
             
-            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal
+            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal // discountAmountForGrandTotal
 //            rawGrandTotal += (roundedVatableSalesForGrandtotal + roundedVat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal
             
             print("\(item.cart_variation_name ?? "") roundedVatableSales: ", roundedVatableSales)
