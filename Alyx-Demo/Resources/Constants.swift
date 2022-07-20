@@ -66,6 +66,10 @@ struct Constants {
     static let secondaryLabelColor: UIColor = .lightGray
     static let secondaryDarkLabelColor: UIColor = .darkGray
     
+    static let demoLabelAlphaBackgroundColor: UIColor = .red.withAlphaComponent(0.75) // .systemBlue
+    
+    
+    
     static let pwdLabelColor: UIColor = .orange
     static let seniorLabelColor: UIColor = .brown
     

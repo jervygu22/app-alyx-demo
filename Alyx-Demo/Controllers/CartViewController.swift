@@ -186,9 +186,9 @@ class CartViewController: UIViewController, CashMethodViewControllerDelegate, Ca
             y: demoLabelContainerHeight/1.5,
             width: demoLabelContainerWidth*3,
             height: demoLabelContainerHeight)
-        demoLabel.backgroundColor = .systemRed
-//        demoLabel.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        demoLabel.backgroundColor = UIColor.red.withAlphaComponent(0.75)
+        //        demoLabel.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        //        demoLabel.backgroundColor = UIColor.red.withAlphaComponent(0.75)
+        demoLabel.backgroundColor = Constants.demoLabelAlphaBackgroundColor
     }
     
     public func defaultEmptyView(with message: String) {
