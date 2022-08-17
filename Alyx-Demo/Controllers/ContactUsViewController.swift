@@ -306,6 +306,8 @@ class ContactUsViewController: UIViewController, UITextFieldDelegate {
             height: view.height / 1.7)
 //        container.backgroundColor = .red
         
+        print("containerframe height: \(container.height)")
+        
         let headerHeight: CGFloat = 50
         let labelHeight: CGFloat = 30
         let fieldHeight = (container.height - headerHeight - (labelHeight*5)) / 5

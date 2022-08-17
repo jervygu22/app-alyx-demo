@@ -445,8 +445,11 @@ class QueueItemViewController: UIViewController {
             appliedDiscountAmount += roundedDiscountAmount
             cartSubTotal += roundedSubTotal
             
-            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal // discountAmountForGrandTotal
+            let roundedGrandTotal = (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal
+            
+//            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal // roundedDiscountAmountForGrandTotal //
 //            rawGrandTotal += (roundedVatableSalesForGrandtotal + roundedVat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal
+            rawGrandTotal += Double(round(100 * roundedGrandTotal) / 100)
             
             print("\(item.cart_variation_name ?? "") roundedVatableSales: ", roundedVatableSales)
             print("\(item.cart_variation_name ?? "") roundedVatExemptSales: ", roundedVatExemptSales)

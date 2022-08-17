@@ -450,8 +450,11 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
             appliedDiscountAmount += roundedDiscountAmount
             cartSubTotal += roundedSubTotal
             
-            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal // discountAmountForGrandTotal
+            let roundedGrandTotal = (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal
+            
+//            rawGrandTotal += (vatableSalesForGrandtotal + vat12AmountForGrandTotal) - discountAmountForGrandTotal // roundedDiscountAmountForGrandTotal //
 //            rawGrandTotal += (roundedVatableSalesForGrandtotal + roundedVat12AmountForGrandTotal) - roundedDiscountAmountForGrandTotal
+            rawGrandTotal += Double(round(100 * roundedGrandTotal) / 100)
             
             print("\(item.cart_variation_name ?? "") roundedVatableSales: ", roundedVatableSales)
             print("\(item.cart_variation_name ?? "") roundedVatExemptSales: ", roundedVatExemptSales)
@@ -475,7 +478,7 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
         print("cartSubTotal: \(cartSubTotal)")
         print("totalSurcharge: \(totalSurcharge)")
         print("grandTotal: \(grandTotal)")
-        
+         
         DispatchQueue.main.async {
             self.subTotalValueLabel.text = String(format:"₱%.2f", self.cartSubTotal)
             self.vatableSalesValueLabel.text = String(format:"₱%.2f", allVatableSales)
@@ -701,8 +704,6 @@ class CashMethodViewController: UIViewController, UITextFieldDelegate {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    
     
     public func isDeviceAuthorized() {
         APICaller.shared.getDevices { result in
